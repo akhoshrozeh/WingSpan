@@ -1,26 +1,26 @@
 # Petstagram
 
-CS 97  
-Winter 2021  
-Eggert  
+CS 130 
+Fall 2021  
+Professor Kim
 
 ## Contributors: 
 
-JJ Choon  
-Richard Lee  
-Stephanie Shin  
+Richard Lee
+Anthony Khoshrozeh
+Alex Feinfield
+Erica Vellanoweth
+Jason Rauchwerk
 Estee Tcheau  
-Allison Zhang
 
-## What is Petstagram?
+## What is Wingspan?
 
-Petstagram is a social media application for your furry friends! Similar to facebook, create accounts, sign in, write posts, and make comments on your friends' posts.
 
 ## How to run the app locally
 
 #### 1. Clone our repository by running the command
 
-`git clone https://github.com/jjwastaken/Petstagram.git`
+`git clone https://github.com/`
 
 #### 2. In the project directory, install the dependencies by running the command
 
