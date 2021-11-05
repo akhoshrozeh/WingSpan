@@ -4,10 +4,6 @@ from tweepy import OAuthHandler
 
 class TwitterCom():
     def __init__(self):
-        API_key = 'U1g02y8NTK3BOhFE2OAAc3k6h'
-        API_secret = '8QXj4Y0tE3PNtsMQVTrh3BV1qESTpWgNHRKuxHRPnPVJVjzeS7'
-        access_token = '1370712710-BPENePfXL81hsTz9Jtwoof5NuC8MK34vQRzd9la'
-        secret_access_token = 'INkIGhwH5cI3W2c1oGgcvUmzO3gq7x4HVDonz3xICa8MO'
         try:
             self.auth = OAuthHandler(API_key, API_secret)
             self.auth.set_access_token(access_token, secret_access_token)
@@ -16,7 +12,7 @@ class TwitterCom():
         except:
             print("Authentication Error.")
 
-    def search_tweets(self, keyword, count):
+    def findTweets(self, keyword, count):
         all_tweets = []
         try:
             tweet_list = self.api.search_tweets(keyword, max_results=count)
