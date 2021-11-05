@@ -1,4 +1,4 @@
-# Petstagram
+# Wingspan
 
 CS 130 
 Fall 2021  
@@ -7,10 +7,15 @@ Professor Kim
 ## Contributors: 
 
 Richard Lee
+
 Anthony Khoshrozeh
+
 Alex Feinfield
+
 Erica Vellanoweth
+
 Jason Rauchwerk
+
 Estee Tcheau  
 
 ## What is Wingspan?
