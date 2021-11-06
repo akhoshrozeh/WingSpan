@@ -1,8 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from .models import TwitterCom
 
 # Create your views here.
-<<<<<<< Updated upstream
-=======
 def index(request):
     """
     For the time being, the view just renders a list of tweets from a random keyword.
@@ -15,4 +15,3 @@ def index(request):
         tweets = []
     html = "<html><body> %s </body></html>" % tweets
     return HttpResponse(html)
->>>>>>> Stashed changes

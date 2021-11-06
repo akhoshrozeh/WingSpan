@@ -2,13 +2,11 @@ from .models import Tweet
 import tweepy
 from tweepy import OAuthHandler
 
-
 """
 TwitterCom() is a class that aids in forming a list of tweets that will be sent over to
 analyze the sentiment of a topic.
 """
 class TwitterCom():
-    
     """
     On __init__, the class prepares the api information and authenticates based on the token.
     """

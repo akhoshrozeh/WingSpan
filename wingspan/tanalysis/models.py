@@ -1,9 +1,6 @@
 from django.db import models
 
 # Create your models here.
-<<<<<<< Updated upstream
-=======
-
 """
 The fields of a Tweet object include the text, username, timestamp, 
 whether the user who made the tweet is verified or not, and the app
@@ -20,4 +17,3 @@ class Tweet(models.Model):
 class Query(models.Model):
     search = models.CharField(max_length=500)
     tweets = models.ManyToManyField(Tweet)
->>>>>>> Stashed changes
