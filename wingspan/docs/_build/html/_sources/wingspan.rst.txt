@@ -1,0 +1,45 @@
+wingspan package
+================
+
+Submodules
+----------
+
+wingspan.asgi module
+--------------------
+
+.. automodule:: wingspan.asgi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+wingspan.settings module
+------------------------
+
+.. automodule:: wingspan.settings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+wingspan.urls module
+--------------------
+
+.. automodule:: wingspan.urls
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+wingspan.wsgi module
+--------------------
+
+.. automodule:: wingspan.wsgi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: wingspan
+   :members:
+   :undoc-members:
+   :show-inheritance:
