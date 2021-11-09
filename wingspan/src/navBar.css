@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.navbar{
+    font-family: 'VT323', monospace;
+    height: 50%;
+    /* background-color: #e6d6e1; */
+    background: #00b9fb;
+    background-position: center;
+    background-size: 100%;
+    position: relative;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+
+}
+
+.logo{
+    background-image: url(./logo.JPG);
+    background-position: center;
+    background-size: 110%;
+    border-radius: 20px;
+    border: black;
+    border: 2px solid black;
+}
+
+.logoHeader{
+    text-align: left;
+    font-size: 3.5em;
+    position: relative;
+    width: 75%;
+    color: white;
+    font-family: Copperplate, fantasy;
+}
+
+.searchBar{
+    /*text-align: right;*/
+    font-size: 1em;
+    position: relative;
+	
+}
+
+/*.menu-options {
+    display: flex;
+}*/
+
+.profileButton {
+    /*text-align: left;*/
+    position: relative;
+    color: black;
+    padding: 5px;
+}
+
+.searchButton{
+    background-image: url(./search.JPG);
+    background-position: bottom right;
+    background-size: 87%;
+    background-color: white;
+    border-radius: 90px;
+    border: black;
+    border: 2px solid black;
+
+}
+
+.clearfix{
+    clear:both;
+}
+
+
+.profileButton:hover {
+    color: indianred;
+    background: aliceblue;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
