@@ -20,7 +20,7 @@ class NavBar extends React.Component {
 
 
 	callAPI() {
-		fetch("http://localhost:3001/self")
+		fetch("http://localhost:3000/self")
 			.then(response => response.json())
 			.then(response => this.setState({ self: response, selfname: response.username }))
 		//console.log(this.state.self);
@@ -36,7 +36,7 @@ class NavBar extends React.Component {
 
     async retrieveUser() {
         const username = this.state.search;
-        fetch(`http://localhost:3001/profiles/${username}`)
+        fetch(`http://localhost:3000/profiles/${username}`)
             .then(response => response.json())
             .then(response => this.setState({userSearch: response, usersname: response.username}));
 

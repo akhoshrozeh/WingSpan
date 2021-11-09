@@ -35,7 +35,7 @@ class Signin extends React.Component
 			search: this.state.search,
 		}
 
-		fetch("http://localhost:3001/self", {
+		fetch("http://localhost:3000/self", {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
@@ -49,7 +49,7 @@ class Signin extends React.Component
 	
 	retrieveSearch() {
         const search = this.state.search;
-        fetch(`http://localhost:3001/profiles/${search}`)
+        fetch(`http://localhost:3000/profiles/${search}`)
             .then(response => response.json())
             .then(response => 
 			this.setState({ 
@@ -108,7 +108,7 @@ class Signin extends React.Component
 						<form>
 							<div class = "searchZ">
 							<input type="text" name="search" placeholder="Search.." value={this.state.search} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
-							<Link type="submit_j" to = {"/main"} style={{color: 'blue'}}> Go</Link>
+							<Link type="submit_j" to = {"/main"} style={{color: '#00BFFF'}}> Go</Link>
 
 							</div>
 							

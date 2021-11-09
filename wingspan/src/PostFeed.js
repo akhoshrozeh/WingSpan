@@ -13,7 +13,7 @@ class PostFeed extends React.Component
   }
 
   retrieveUsers() {
-    fetch("http://localhost:3001/posts")
+    fetch("http://localhost:3000/posts")
       .then(response => response.json())
       .then(response => this.setState({posts: response}))
   }

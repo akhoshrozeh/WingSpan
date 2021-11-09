@@ -16,7 +16,7 @@ class Post extends React.Component {
 	}
 
     retrieveSelf() {
-        fetch("http://localhost:3001/self")
+        fetch("http://localhost:3000/self")
 			.then(response => response.json())
 			.then(response => this.setState({ self: response }))
     }
@@ -41,7 +41,7 @@ class Post extends React.Component {
             comments: [],
             time: Date().toLocaleString(),
 		}
-		fetch("http://localhost:3001/posts", {
+		fetch("http://localhost:3000/posts", {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
@@ -50,18 +50,8 @@ class Post extends React.Component {
 			body: JSON.stringify(text)
 		})
             .then(res => res.json())
-            /*.then(res => fetch("http://localhost:3001/profiles", {
-                method: 'PATCH',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({username: this.state.self.username, post: res})
-            }))*/
-        //console.log(text);
-        
-        // update posts of self too
-        fetch("http://localhost:3001/profiles", {
+
+        fetch("http://localhost:3000/profiles", {
             method: 'PATCH',
             mode: 'cors',
             headers: {
