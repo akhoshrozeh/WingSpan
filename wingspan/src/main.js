@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import NavBar from './navbar.js';
-import Comment_Reaction from './comment_reaction.js';
-import Post from './post.js';
-import './main.css';
-import PostFeed from './PostFeed.js';
+import Graph from './graphpage.js';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class Main extends React.Component 
@@ -24,13 +21,11 @@ class Main extends React.Component
 					<NavBar />
 					<Switch>
 					<Route exact path='/main'>
-						<PostFeed />
+						<Graph />
 					</Route>
 				</Switch>
 				</div>
-				
 			</BrowserRouter>
-			
 		);
 	}
 }

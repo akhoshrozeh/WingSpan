@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');	
+	body
+	{
+		background-image: url(./SignBG.png);
+		background-size: 150px;
+		background-repeat: no-repeat;
+		background-color: white;
+		background-position: left bottom;
+		background-position: fixed;
+		margin-left: 300px;
+		overflow-x: hidden;  
+	}
+
+	.frontBG{
+		font-family: Copperplate, fantasy;
+		text-indent: 8px;
+		text-align: left;
+		font-size: 3.5em;
+		color: white;
+		font-family: Copperplate, fantasy;
+		background: #00b9fb;
+		padding: 8px;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		margin-left: calc(-50vw + 50%);
+		border-radius: 0px 0px 20px 20px;
+		position: fixed;
+	}
+	
+	.front-window
+	{
+		border: 2px solid rgb(255, 255, 255);
+		height: 80px;
+		width: 400px;
+		margin-right: 50px;
+		margin-top: 300px;
+		border-radius: 20px;
+		right: 0;
+	}
+	
+	.front_searchButton{
+		outline: none;
+		background-image: url(./search.JPG);
+		background-repeat: no-repeat;
+		height: 50px;
+		width: 50px;
+		background-size: 70%;
+		background-position: center;
+		background-color: white;
+		border-radius: 100px;
+		margin-top: 1px;
+		margin-left: 10px;
+		border: black;
+		position: fixed;
+		border: 2px solid silver;
+	}
+
+	input[type=text] {
+		width: 500px;
+		box-sizing: border-box;
+		border: 2px solid #ccc;
+		border-radius: 4px;
+		font-size: 16px;
+		background-color: white;
+		background-size: 25px;
+		position: relative;
+		background-position: 10px 10px; 
+		background-repeat: no-repeat;
+		padding: 12px 20px 12px 40px;
+		transition: width 0.4s ease-in-out;
+	  }
+

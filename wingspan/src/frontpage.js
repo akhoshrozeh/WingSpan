@@ -2,10 +2,7 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import logo from './search.JPG'; 
-import NavBar from './navbar.js';
-
-import './signin.css';
+import './frontpage.css';
 
 class Signin extends React.Component
 {
@@ -54,9 +51,7 @@ class Signin extends React.Component
             .then(response => 
 			this.setState({ 
 				searching: response.search, 
-			}, () => { 
-
-			}));
+			}, () => { }));
     }
 	
 	checkOnClick()
@@ -84,7 +79,6 @@ class Signin extends React.Component
 	{
 		this.retrieveSearch();
 		this.state.clicked = true;
-		//console.log(3);
 	}
 
 	reset_click() {
@@ -100,25 +94,18 @@ class Signin extends React.Component
 		const message = 'Your search sucks';
 		var page = this.checkOnClick();
 		return (
-				<body class = "signin-container" >
-					<NavBar />
-
-					<div class = "signin-window"> 
-
-						<form>
-							<div class = "search">
-							<input type="text" name="search" placeholder="Search.." value={this.state.search} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
-							<Link type="submit_j" to = {"/main"} style={{color: '#00BFFF'}}> Go</Link>
-
-							</div>
-							
-
-						</form>
-
-					</div>
-
-					<h5 id="warning" style={{visibility: vis_style}}> {message} </h5>
-				</body>
+			<div class = "container">
+				<div class = "frontBG">WINGSPAN</div>
+				<div class = "front-window"></div>
+					<form>
+					<div class = "search">
+					<input type="text" name="search" placeholder="Search.." value={this.state.search} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
+						<Link type="submit_j" to = {"/main"}> 
+							<button class="front_searchButton" type="submit"> </button>
+						</Link>
+					</div>	
+					</form>
+			</div>
 		);
 	}
 }

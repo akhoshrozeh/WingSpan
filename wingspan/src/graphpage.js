@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Comment_Reaction from './comment_reaction.js';
-import Post from './post.js';
 
 class PostFeed extends React.Component 
 {
