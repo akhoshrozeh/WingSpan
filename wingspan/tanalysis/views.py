@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from . import twittercom
+from .twittercom import TwitterCom
+# from . import twittercom
+
 
 # Create your views here.
 def index(request):

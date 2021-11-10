@@ -69,3 +69,4 @@ class TwitterCom():
         except tweepy.TweepyException as e:
             logging.error('Error:' + e)
             return all_tweets
+
