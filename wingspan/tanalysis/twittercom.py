@@ -1,6 +1,7 @@
 from .models import Tweet
 import tweepy
 from tweepy import OAuthHandler
+import logging
 
 """
 TwitterCom() is a class that aids in forming a list of tweets that will be sent over to
@@ -32,6 +33,8 @@ class TwitterCom():
     def findTweets(self, keyword, count):
         all_tweets = []
         try:
+            if count == 0:
+                return all_tweets
             tweet_list = self.api.search_tweets(keyword, max_results=count)
             for tweet in tweet_list:
                 this_tweet = Tweet(text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
@@ -43,4 +46,5 @@ class TwitterCom():
                     all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
-            print("Error: " + e)
+            logging.error('Error:' + e)
+            return all_tweets
