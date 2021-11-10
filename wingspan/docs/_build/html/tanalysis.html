@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>tanalysis package &#8212; WingSpan  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="tanalysis" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tanalysis-package">
+<h1>tanalysis package<a class="headerlink" href="#tanalysis-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="tanalysis-models-module">
+<h2>tanalysis.models module<a class="headerlink" href="#tanalysis-models-module" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tanalysis.models.</span></span><span class="sig-name descname"><span class="pre">Query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is used to store information about a query made by a user and its results</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">search</span></span></dt>
+<dd><p>the search query given by the user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>CharField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">tweets</span></span></dt>
+<dd><p>Tweets that were returned by the search from Twitter’s API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ManyToManyField(Tweet)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tanalysis.models.</span></span><span class="sig-name descname"><span class="pre">Tweet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>This class is used to store information about a Tweet</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">text</span></span></dt>
+<dd><p>the text of the Tweet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>CharField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">username</span></span></dt>
+<dd><p>the username of the Twitter account</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>CharField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">timestamp</span></span></dt>
+<dd><p>the timestamp of when the Tweet was published</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>DateTimeField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">verified</span></span></dt>
+<dd><p>is the Twitter account verified</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>BooleanField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sentiment_score</span></span></dt>
+<dd><p>the sentiment score from Google’s NLP API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>FloatField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">sentiment_magnitude</span></span></dt>
+<dd><p>the sentiment magnitude from Google’s NLP API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>FloatField</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tanalysis.sentiment">
+<span id="tanalysis-sentiment-module"></span><h2>tanalysis.sentiment module<a class="headerlink" href="#module-tanalysis.sentiment" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tanalysis.sentiment.SentimentAnalyzer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tanalysis.sentiment.</span></span><span class="sig-name descname"><span class="pre">SentimentAnalyzer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Type.PLAIN_TEXT</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tanalysis.sentiment.SentimentAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is used to perform sentiment analysis on Tweet objects</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tanalysis.sentiment.SentimentAnalyzer.analyzer">
+<span class="sig-name descname"><span class="pre">analyzer</span></span><a class="headerlink" href="#tanalysis.sentiment.SentimentAnalyzer.analyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A google.cloud LanguageServiceClient instance</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tanalysis.sentiment.SentimentAnalyzer.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#tanalysis.sentiment.SentimentAnalyzer.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A string that indicates the type of text to be given to the analyzer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tanalysis.sentiment.SentimentAnalyzer.analyzeTweets">
+<span class="sig-name descname"><span class="pre">analyzeTweets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tweets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tanalysis.models.Tweet</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tanalysis.sentiment.SentimentAnalyzer.analyzeTweets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates through a given list of Tweet objects, uses the analyzer to perform sentiment analysis on the text,
+and updates the sentiment_score and sentiment_magnitude of each Tweet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tweets</strong> (<em>List</em><em>[</em><em>Tweet</em><em>]</em>) – list of tweets to analyze</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tanalysis.twittercom">
+<span id="tanalysis-twittercom-module"></span><h2>tanalysis.twittercom module<a class="headerlink" href="#module-tanalysis.twittercom" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tanalysis.twittercom.TwitterCom">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tanalysis.twittercom.</span></span><span class="sig-name descname"><span class="pre">TwitterCom</span></span><a class="headerlink" href="#tanalysis.twittercom.TwitterCom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>TwitterCom() is a class that aids in forming a list of tweets that will be sent over to
+analyze the sentiment of a topic.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tanalysis.twittercom.TwitterCom.auth">
+<span class="sig-name descname"><span class="pre">auth</span></span><a class="headerlink" href="#tanalysis.twittercom.TwitterCom.auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>authentication to be used with Tweepy API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Tweepy.OAuthHandler</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tanalysis.twittercom.TwitterCom.api">
+<span class="sig-name descname"><span class="pre">api</span></span><a class="headerlink" href="#tanalysis.twittercom.TwitterCom.api" title="Permalink to this definition">¶</a></dt>
+<dd><p>used to query Tweepy API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Tweepy.API</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tanalysis.twittercom.TwitterCom.findTweets">
+<span class="sig-name descname"><span class="pre">findTweets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tanalysis.twittercom.TwitterCom.findTweets" title="Permalink to this definition">¶</a></dt>
+<dd><p>When a query has been made, findTweets() will run a search to Twitter’s API based on the query.
+It returns a response from a search by keyword and number of tweets requested, and from each
+tweet in that response object, the necessary information to build Tweet objects are stored.
+It stores the results from the search in a list of Tweet objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyword</strong> (<em>str</em>) – query to be used to search for Tweets</p></li>
+<li><p><strong>count</strong> (<em>int</em>) – max results to be returned by Twitter API</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List[Tweet]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WingSpan</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">tanalysis</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tanalysis package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">tanalysis</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">tanalysis</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Alex Feinfield, Anthony Khoshrozeh, Richard Lee, Jason Rauchwerk, Estee Tcheau, Erica Vellanoweth.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/tanalysis.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
