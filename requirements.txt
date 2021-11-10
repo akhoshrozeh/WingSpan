@@ -1,2 +1,4 @@
 django
 google-cloud-language
+sphinx
+tweepy
