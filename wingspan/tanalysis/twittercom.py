@@ -2,6 +2,7 @@ from .models import Tweet
 import tweepy
 from tweepy import OAuthHandler
 import logging
+import json
 
 """
 TwitterCom() is a class that aids in forming a list of tweets that will be sent over to
@@ -13,16 +14,18 @@ class TwitterCom():
     """
     def __init__(self):
         try:
-            API_key = ''
-            API_secret = ''
-            access_token = ''
-            secret_access_token = ''
+            with open('twittercreds.json', 'r') as file_to_read:
+                json_data = json.load(file_to_read)
+            API_key = json_data["API_KEY"]
+            API_secret = json_data["API_SECRET"]
+            access_token = json_data["ACCESS_TOKEN"]
+            secret_access_token = json_data["SECRET_ACCESS_TOKEN"]
             self.auth = OAuthHandler(API_key, API_secret)
             self.auth.set_access_token(access_token, secret_access_token)
             self.api = tweepy.API(self.auth)
-            print('Authenticated')
+            logging.info('Authenticated')
         except:
-            print("Authentication Error.")
+            logging.error("Authentication Error.")
 
     """
     When a query has been made, findTweets() will run a search to Twitter's API based on the query.
