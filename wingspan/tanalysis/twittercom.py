@@ -2,6 +2,7 @@ from .models import Tweet
 import tweepy
 from tweepy import OAuthHandler
 import logging
+from dotenv import load_dotenv
 import os
 
 """
@@ -14,10 +15,11 @@ class TwitterCom():
     """
     def __init__(self):
         try:
-            API_key = os.environ["API_KEY"]
-            API_secret = os.environ["API_SECRET"]
-            access_token = os.environ["ACCESS_TOKEN"]
-            secret_access_token = os.environ["SECRET_ACCESS_TOKEN"]
+            load_dotenv()
+            API_key = os.getenv("API_KEY")
+            API_secret = os.getenv("API_SECRET")
+            access_token = os.getenv("ACCESS_TOKEN")
+            secret_access_token = os.getenv("SECRET_ACCESS_TOKEN")
             self.auth = OAuthHandler(API_key, API_secret)
             self.auth.set_access_token(access_token, secret_access_token)
             self.api = tweepy.API(self.auth)
