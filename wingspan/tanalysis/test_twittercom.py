@@ -1,6 +1,6 @@
 from django.test import TestCase
-from django.utils import timezone
-import os
+#from django.utils import timezone
+#import os
 import unittest
 
 from .models import Tweet
@@ -11,9 +11,14 @@ class TwitterComTestCase(TestCase):
         self.tc = TwitterCom()
         
     def test_no_tweets(self):
-        no_tweets = self.tc.findTweets("", 0)
+        no_tweets = self.tc.findTweets("survivor", 0)
         self.assertEqual(no_tweets, [])
         
-    def test_find_tweets(self):
-    	tweets = self.tc.findTweets("survivor", 10)
-    	self.assertEqual(len(tweets), 10)
+    def test_no_query(self):
+        no_tweets = self.tc.findTweets("", 10)
+        self.assertEqual(no_tweets, [])
+        
+    def test_find_tweets_count(self):
+        count = 10
+        tweets = self.tc.findTweets("survivor", count)
+        self.assertTrue(len(tweets) <= count)
