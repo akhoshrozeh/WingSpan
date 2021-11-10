@@ -32,7 +32,7 @@ class TwitterCom():
     def findTweets(self, keyword, count):
         all_tweets = []
         try:
-            tweet_list = self.api.search_tweets(keyword, max_results=count)
+            tweet_list = self.api.search_tweets(keyword, count=count)
             for tweet in tweet_list:
                 this_tweet = Tweet(text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
                     verified=tweet.user.verified)
