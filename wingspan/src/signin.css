@@ -6,7 +6,10 @@
 		background-size: 150px;
 		background-repeat: no-repeat;
 		background-color: white;
-		background-position: center;
+		background-position: left bottom;
+		background-position: fixed;
+		margin-left: 300px;
+
 	}
 	
 	.signin-newAccount
@@ -46,6 +49,8 @@
 		position: absolute;
 		right: 0;
 		z-index: 2;
+		background-image: url(./SignBG.png);
+
 	}
 	
 	.signin-logo
@@ -56,6 +61,8 @@
 		top: 50px;
 		z-index: 3;
 		border-radius: 20px;
+		background-image: url(./SignBG.png);
+
 	}
 	a:link[type=submit_i]
 	{
@@ -110,6 +117,8 @@
 		text-align: center;
 		width: 50%;
 		margin: 60%;
+		background-image: url(./SignBG.png);
+
 
 	}
 
@@ -119,4 +128,6 @@ h6 {
 	color: white;
 	padding-left: 2em;
 	border-radius: 10px;
+	background-image: url(./SignBG.png);
+
 }

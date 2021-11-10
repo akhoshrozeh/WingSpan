@@ -106,7 +106,7 @@ class Signin extends React.Component
 					<div class = "signin-window"> 
 
 						<form>
-							<div class = "searchZ">
+							<div class = "search">
 							<input type="text" name="search" placeholder="Search.." value={this.state.search} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
 							<Link type="submit_j" to = {"/main"} style={{color: '#00BFFF'}}> Go</Link>
 
