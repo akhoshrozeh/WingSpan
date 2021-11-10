@@ -1,6 +1,9 @@
 from tanalysis.models import Tweet
 import tweepy
 from tweepy import OAuthHandler
+import logging
+from dotenv import load_dotenv
+import os
 
 
 class TwitterCom():
@@ -21,16 +24,17 @@ class TwitterCom():
         
         """
         try:
-            API_key = ''
-            API_secret = ''
-            access_token = ''
-            secret_access_token = ''
+            load_dotenv()
+            API_key = os.getenv("API_KEY")
+            API_secret = os.getenv("API_SECRET")
+            access_token = os.getenv("ACCESS_TOKEN")
+            secret_access_token = os.getenv("SECRET_ACCESS_TOKEN")
             self.auth = OAuthHandler(API_key, API_secret)
             self.auth.set_access_token(access_token, secret_access_token)
             self.api = tweepy.API(self.auth)
-            print('Authenticated')
+            logging.info('Authenticated')
         except:
-            print("Authentication Error.")
+            logging.error("Authentication Error.")
 
     def findTweets(self, keyword, count):
         """
@@ -50,6 +54,8 @@ class TwitterCom():
         """
         all_tweets = []
         try:
+            if count == 0:
+                return all_tweets
             tweet_list = self.api.search_tweets(keyword, max_results=count)
             for tweet in tweet_list:
                 this_tweet = Tweet(text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
@@ -61,4 +67,5 @@ class TwitterCom():
                     all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
-            print("Error: " + e)
+            logging.error('Error:' + e)
+            return all_tweets
