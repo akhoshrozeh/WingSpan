@@ -11,9 +11,9 @@ class TwitterComTestCase(TestCase):
         self.tc = TwitterCom()
         
     def test_no_tweets(self):
-        no_tweets = tc.findTweets("", 0)
+        no_tweets = self.tc.findTweets("", 0)
         self.assertEqual(no_tweets, [])
         
     def test_find_tweets(self):
-    	tweets = tc.findTweets("survivor", 10)
+    	tweets = self.tc.findTweets("survivor", 10)
     	self.assertEqual(len(tweets), 10)

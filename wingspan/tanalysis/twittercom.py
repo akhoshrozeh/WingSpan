@@ -43,4 +43,4 @@ class TwitterCom():
                     all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
-            print("Error: " + e)
+            print("Error: " + str(e))
