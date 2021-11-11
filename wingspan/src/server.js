@@ -1,5 +1,6 @@
 // Initializations of APIs
 const express = require('express');
+const request = require('request');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -8,20 +9,41 @@ app.use(cors()); // Allows express to respond to requests
 app.use(bodyParser.json()); // Asks for a JSON to be used
 
 let searchQuery = "";
+let djangoSearch = "http://localhost:8000/api?query=";
 
 /* Retrieves search query from front page and sets to searchQuery */
-app.post('/', function (request, response) {
-	searchQuery = request.body.query;
+app.post('/', async function (req, res) {
+	searchQuery = req.body.query;
+	
+	request((djangoSearch + searchQuery), async function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			/* Retrieves the body (data) from Django server consisting of tweets */
+			let tweets = JSON.parse(body);
+			/* Example on how to access the data */
+			console.log(tweets[0].username);
+		}
+	});	
+	
 	console.log(searchQuery);
 });
 
 /* Retrieves search query from navbar and sets to searchQuery */
-app.post('/main', function (request, response) {
-	searchQuery = request.body.query;
+app.post('/main', function (req, res) {
+	searchQuery = req.body.query;
+	
+	request((djangoSearch + searchQuery), async function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			/* Retrieves the body (data) from Django server consisting of tweets */
+			let tweets = JSON.parse(body);
+			/* Example on how to access the data */
+			console.log(tweets[0].username);
+		}
+	});	
+	
 	console.log(searchQuery);
 });
 
-/* Sets port for express server */
+/* Listens for Express server */
 app.listen(3001, () => {
     console.log('Server Listening on port 3001');
 });
