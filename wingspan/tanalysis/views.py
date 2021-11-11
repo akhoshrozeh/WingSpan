@@ -4,25 +4,37 @@ from .twittercom import TwitterCom
 from .sentiment import SentimentAnalyzer
 
 # Create your views here.
+def toJson(tweet):
+        return {'text' : tweet.text, 'username' : tweet.username,
+                'timestamp': tweet.timestamp, 'verified' : tweet.verified,
+                'sentiment_score' : tweet.sentiment_score,
+                'sentiment_magnitude' : tweet.sentiment_magnitude}
+
 def index(request):
     """
     For the time being, the view just renders a list of tweets from a random keyword.
     This is where the frontend is rendered.
     """
-    try:
-        twitter_launcher = TwitterCom()
-        tweets = twitter_launcher.search_tweets("bachelorette", 20)
-    except:
-        tweets = []
-    html = "<html><body> %s </body></html>" % tweets
-    return HttpResponse(html)
-
-def api(request):
-    if 'query' in request:
+    query = request.GET.get('query',None)
+    if query is not None:
         sa = SentimentAnalyzer()
         tc = TwitterCom()
-        tweets = sa.analyzeTweets(tc.findTweets(request.query, 10))
-        tweets = list(map(lambda t: vars(t)))
-        return JSONResponse(tweets, safe=False)
+        tweets = tc.findTweets(query, 10)
+        sa.analyzeTweets(tweets)
+        tweets = list(map(lambda t: toJson(t), tweets))
+        html = "<html><body> %s </body></html>" % tweets
+        return HttpResponse(html)
+    else:
+        return HttpResponseBadRequest()
+
+def api(request):
+    query = request.GET.get('query',None)
+    if query is not None:
+        sa = SentimentAnalyzer()
+        tc = TwitterCom()
+        tweets = tc.findTweets(query, 10)
+        sa.analyzeTweets(tweets)
+        tweets = list(map(lambda t: toJson(t), tweets))
+        return JsonResponse(tweets, safe=False)
     else:
         return HttpResponseBadRequest()
