@@ -52,13 +52,13 @@ Go to http://localhost:3000 in your browser to start the application!
 
 ## How to run the Django backend
 
-### 1. Navigate to the Wingspan folder and run
+#### 1. Navigate to the Wingspan folder and run
 
 `pip install -r requirements.txt`
 
-### 2. Retrieve the .env file and place it in Wingspan/wingspan/wingspan
+#### 2. Retrieve the .env file and place it in Wingspan/wingspan/wingspan
 
-### 3. Navigate to Wingspan/wingspan and run
+#### 3. Navigate to Wingspan/wingspan and run
 
 `python manage.py runserver`
 
