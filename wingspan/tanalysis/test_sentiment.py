@@ -8,19 +8,19 @@ from .sentiment import SentimentAnalyzer
 
 class SentimentTestCase(TestCase):
     def setUp(self):
-        tweet = Tweet()
-        tweet.text = ""
-        tweet.username = ""
-        tweet.timestamp = timezone.now()
-        tweet.verified = True
-        tweet.sentiment_score = None
-        tweet.sentiment_magnitude = None
+        self.tweet = Tweet()
+        self.tweet.text = ""
+        self.tweet.username = ""
+        self.tweet.timestamp = timezone.now()
+        self.tweet.verified = True
+        self.tweet.sentiment_score = None
+        self.tweet.sentiment_magnitude = None
         
-    @unittest.skip('Limited number of Google API queries')
+    # @unittest.skip('Limited number of Google API queries')
     def test_analyze_tweets(self):
-        self.assertTrue("GOOGLE_APPLICATION_CREDENTIALS" in os.environ)
+        # self.assertTrue("GOOGLE_APPLICATION_CREDENTIALS" in os.environ)
         sa = SentimentAnalyzer()
-        sa.analyzeTweets([tweet])
+        sa.analyzeTweets([self.tweet])
         
-        self.assertTrue(tweet.sentiment_score is not None)
-        self.assertTrue(tweet.sentiment_magnitude is not None)
+        self.assertTrue(self.tweet.sentiment_score is not None)
+        self.assertTrue(self.tweet.sentiment_magnitude is not None)

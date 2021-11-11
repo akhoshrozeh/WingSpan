@@ -2,3 +2,5 @@ django
 google-cloud-language
 sphinx
 tweepy
+python-dotenv
+django-environ
