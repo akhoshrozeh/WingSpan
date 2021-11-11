@@ -5,10 +5,10 @@ from .sentiment import SentimentAnalyzer
 
 # Create your views here.
 def toJson(tweet):
-        return {'text' : tweet.text, 'username' : tweet.username,
-                'timestamp': tweet.timestamp, 'verified' : tweet.verified,
-                'sentiment_score' : tweet.sentiment_score,
-                'sentiment_magnitude' : tweet.sentiment_magnitude}
+    return {'text' : tweet.text, 'username' : tweet.username,
+            'timestamp': tweet.timestamp, 'verified' : tweet.verified,
+            'sentiment_score' : tweet.sentiment_score,
+            'sentiment_magnitude' : tweet.sentiment_magnitude}
 
 def index(request):
     """
