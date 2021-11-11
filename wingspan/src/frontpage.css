@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');	
 	body
 	{
-		background-image: url(./SignBG.png);
+		background-image: url(./logo.png);
 		background-size: 150px;
 		background-repeat: no-repeat;
 		background-color: white;
@@ -50,8 +50,8 @@
 		background-position: center;
 		background-color: white;
 		border-radius: 100px;
-		margin-top: 1px;
 		margin-left: 10px;
+		margin-top: 2px;
 		border: black;
 		position: fixed;
 		border: 2px solid silver;

@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-
 import Main from './main.js';
 import FrontPage from './frontpage.js';
 
 class Home extends React.Component
 {	
-
 	render()
 	{		
 		return (		
