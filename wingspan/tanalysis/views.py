@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from .twittercom import TwitterCom
-# from . import twittercom
-
+from .sentiment import SentimentAnalyzer
 
 # Create your views here.
 def index(request):
@@ -17,3 +16,13 @@ def index(request):
         tweets = []
     html = "<html><body> %s </body></html>" % tweets
     return HttpResponse(html)
+
+def api(request):
+    if 'query' in request:
+        sa = SentimentAnalyzer()
+        tc = TwitterCom()
+        tweets = sa.analyzeTweets(tc.findTweets(request.query, 10))
+        tweets = list(map(lambda t: vars(t)))
+        return JSONResponse(tweets, safe=False)
+    else:
+        return HttpResponseBadRequest()
