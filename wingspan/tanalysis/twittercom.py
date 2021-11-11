@@ -25,10 +25,10 @@ class TwitterCom():
         """
         try:
             load_dotenv()
-            API_key = os.getenv("API_KEY")
-            API_secret = os.getenv("API_SECRET")
-            access_token = os.getenv("ACCESS_TOKEN")
-            secret_access_token = os.getenv("SECRET_ACCESS_TOKEN")
+            API_key = os.environ.get("API_KEY")
+            API_secret = os.environ.get("API_SECRET")
+            access_token = os.environ.get("ACCESS_TOKEN")
+            secret_access_token = os.environ.get("SECRET_ACCESS_TOKEN")
             self.auth = OAuthHandler(API_key, API_secret)
             self.auth.set_access_token(access_token, secret_access_token)
             self.api = tweepy.API(self.auth)
@@ -56,7 +56,7 @@ class TwitterCom():
         try:
             if count == 0:
                 return all_tweets
-            tweet_list = self.api.search_tweets(keyword, max_results=count)
+            tweet_list = self.api.search_tweets(keyword, count=count)
             for tweet in tweet_list:
                 this_tweet = Tweet(text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
                     verified=tweet.user.verified)
@@ -67,6 +67,6 @@ class TwitterCom():
                     all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
-            logging.error('Error:' + e)
+            logging.error('Error:' + str(e))
             return all_tweets
 
