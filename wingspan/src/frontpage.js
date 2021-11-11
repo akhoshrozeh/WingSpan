@@ -1,113 +1,62 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import './frontpage.css';
 
-class Signin extends React.Component
+class FrontPage extends React.Component
 {
 	constructor(props) {
+		/* Calls React Component Constructor */
 		super(props);
+		
+		/* Constructor */
 		this.state = {
-			search: '',
-			searching: '',
-			click: false,
-			tempu : '',
-			tempp :'',
-			warning: false,
-			case1: false,
-			clicked: false
+			value: '',
 		}
+		
+		/* Binds function names to their respective functions */
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleChange(e) {
-		this.state.clicked = false;
-		this.setState({search: e.target.value})
+	/* Updates this.state.value whenever new character is input/deleted */
+	handleChange(event) {
+		this.setState({value: event.target.value});
 	}
-	
-	saveSelf() {
-		const data = {
-			search: this.state.search,
-		}
 
-		fetch("http://localhost:3000/self", {
+	/* When submit button is clicked, this.state.value contains data from search box */
+	handleSubmit() {
+		fetch("http://localhost:3001/", {
 			method: 'POST',
 			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				query : this.state.value
+			})
 		})
-			.then(res => res.json())
-			.then(res => console.log(res))
+			.then(function(response){return response.json()})
+			.catch(error=>console.log(error))
 	}
 	
-	retrieveSearch() {
-        const search = this.state.search;
-        fetch(`http://localhost:3000/profiles/${search}`)
-            .then(response => response.json())
-            .then(response => 
-			this.setState({ 
-				searching: response.search, 
-			}, () => { }));
-    }
-	
-	checkOnClick()
-	{
-		if ((this.state.searching == this.state.search) && this.state.searching != "") 
-		{
-                this.warning = false;
-				this.handleSubmit()
-				return "/main";
-
-		} else if (this.state.search !== '') {
-			this.state.warning = true;
-			this.state.case1 = false;
-			console.log(2);
-		}
-		return "/";
-	}
-	
-	handleSubmit()
-	{
-		return this.saveSelf();
-	}
-	
-	click()
-	{
-		this.retrieveSearch();
-		this.state.clicked = true;
-	}
-
-	reset_click() {
-		this.state.clicked = false;
-		this.state.warning = false;
-	}
-
+	/* Container holds front end elements */
+	/* FrontBG contains Top color block with WINGSPAN text */
+	/* Front-window contains text box and search button image */
+	/* Label to separate entity of textbox and search button */
+	/* Button runs two functions, one to handleSubmit and one to redirect to '/main' */
 	render()
 	{
-		console.log(this.state.warning, "w");
-		console.log(this.state.clicked, "c");
-		const vis_style = (this.state.warning && this.state.clicked == true) ? 'visible' : 'hidden';
-		const message = 'Your search sucks';
-		var page = this.checkOnClick();
 		return (
-			<div class = "container">
-				<div class = "frontBG">WINGSPAN</div>
-				<div class = "front-window"></div>
-					<form>
-					<div class = "search">
-					<input type="text" name="search" placeholder="Search.." value={this.state.search} onChange={this.handleChange} onkeydown={() => this.reset_click}/>
-						<Link type="submit_j" to = {"/main"}> 
-							<button class="front_searchButton" type="submit"> </button>
-						</Link>
-					</div>	
-					</form>
+			<div className = "container">
+				<div className = "frontBG">WINGSPAN</div>
+				<div className = "front-window"></div>
+				<label>
+					<input type = "text" placeholder = "Search.." value = {this.state.value} onChange = {this.handleChange}/>
+				</label>
+				<button className = "front_searchButton" type = "submit" onClick={(e) => {this.handleSubmit(); window.location.href = '/main';}}/>
 			</div>
 		);
 	}
 }
 
-export default Signin;
+export default FrontPage;
