@@ -29,3 +29,10 @@ body{
     border: black;
     border: 2px solid silver;
 }
+
+/* Chart Container */
+.chartcontainer{
+	position: absolute;
+	left: 0px;
+	
+}

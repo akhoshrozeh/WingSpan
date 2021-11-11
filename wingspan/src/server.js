@@ -20,7 +20,7 @@ app.post('/', async function (req, res) {
 			/* Retrieves the body (data) from Django server consisting of tweets */
 			let tweets = JSON.parse(body);
 			/* Example on how to access the data */
-			console.log(tweets[0].username);
+			console.log(tweets[0]);
 		}
 	});	
 	
@@ -36,7 +36,7 @@ app.post('/main', function (req, res) {
 			/* Retrieves the body (data) from Django server consisting of tweets */
 			let tweets = JSON.parse(body);
 			/* Example on how to access the data */
-			console.log(tweets[0].username);
+			console.log(tweets[0]);
 		}
 	});	
 	

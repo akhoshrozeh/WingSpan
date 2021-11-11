@@ -3,6 +3,28 @@ import "./navbar.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import { Chart } from "react-google-charts";
+
+const data = [
+  ["Hour", "Sentiment Value"],
+  ["1", 1000],
+  ["2", 1170],
+  ["3", 660],
+  ["4", 1030]
+];
+
+const options = {
+  hAxis: {
+    title: 'Time',
+  },
+  vAxis: {
+    title: 'Sentiment Value',
+  },
+  title: "Sentiment Analysis",
+  curveType: "function",
+  legend: { position: "bottom" }
+
+};
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -43,13 +65,25 @@ class NavBar extends React.Component {
 	/* Class form-inline shapes search box*/
 	/* Class searchButton contains image of search button, redirect back to main once submitted query */
     render() {
-        return (
+        return (	
+		<div>
             <nav className = "navbar">WINGSPAN
                 <form className = "form-inline">
                     <input className = "form-control mr-sm-2" type = "search" placeholder = "Search..." aria-label="Search" value = {this.state.value} onChange = {this.handleInputChange}/>	
                     <button className = "searchButton" type = "submit" onClick={(e) => {this.handleNavSubmit(); window.location.href = '/main';}}/>
 				</form>
             </nav>
+			<div className = "chartcontainer">
+				<Chart
+					chartType = "LineChart"
+					data = {data}
+					width = "1200px"
+					height = "600px"
+					options={options}
+					legendToggle
+				/>
+			</div>
+		</div>
         );
     }
 }
