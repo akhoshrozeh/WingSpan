@@ -8,8 +8,8 @@
 		background-position: left bottom;
 		background-position: fixed;
 		margin-left: 300px;
-        margin-bottom: 300px;
-		overflow-x: hidden;  
+        	margin-bottom: 300px;
+		overflow: hidden; 
 	}
 
 	.frontBG{
