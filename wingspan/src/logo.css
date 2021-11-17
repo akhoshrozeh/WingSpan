@@ -1,0 +1,7 @@
+	.logo{
+		background-image: url(./logo.png); /* Pulls image from src */
+		background-repeat: no-repeat; /* Prevents repeat */
+		background-size: 100%; /* Scales logo size relative to its border */
+		width: 150px; /* Set width of logo */
+		height: 150px; /* Set height of logo */
+	}

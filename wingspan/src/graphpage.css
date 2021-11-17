@@ -1,0 +1,6 @@
+	.querysearchbarcontainer{
+		position: fixed; /* Keeps search bar constant on page */
+		z-index: 1; /* Places the search bar in front of the header */
+		top: 3%; /* Spacing from top edge */
+		right: 500px; /* Spacing from right edge, use px so search bar moves with window resizing */
+	}

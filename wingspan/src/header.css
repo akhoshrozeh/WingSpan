@@ -1,0 +1,10 @@
+	.header{
+		font-family: Helvetica; /* Header font */
+		font-weight: bold; /* Header bold */
+		color: white; /* Text color */
+		font-size: 20px; /* Font size */
+		background-color: #1DA1F2; /* Header color */
+		padding: 10px; /* Header size */
+		border-radius: 0 0 15% 15%; /* Header edge rounding */
+	}
+	

@@ -1,0 +1,5 @@
+	.graphcontainer{
+		position: fixed; /* Graph does not move */
+		top: 15%; /* Spacing from top edge */
+		left: 20px; /* Spacing from left edge */
+	}
