@@ -6,6 +6,7 @@
 	}
 	
 	.headercontainer{
+		z-index: 1;
 		position: fixed; /* Sets the header to the top */
 		width: 100%; /* Stretches header to ends of screen */
 		top: 0px; /* Sets header to top edge */
