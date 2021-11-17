@@ -13,11 +13,9 @@ class TopTweets extends React.Component {
 
     render() {
         return (
-            <div class="toptweets">
-                    <h2> Top Tweets </h2>
-            <div class="tweets">
+            <div class="tweetcontainer">
                     {this.tweets}
-            </div></div>
+            </div>
         );
     }
 }

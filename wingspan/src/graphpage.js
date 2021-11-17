@@ -6,8 +6,11 @@ import SearchBar from './searchbar.js';
 import Logo from './logo.js';
 import Header from './header.js';
 import Graph from './graph.js';
+import TopTweets from './toptweets.js';
 import './graphpage.css';
 import './background.css';
+
+const ids = ["20", "1460657276142895123"]
 
 class GraphPage extends React.Component 
 {
@@ -28,6 +31,9 @@ class GraphPage extends React.Component
 					<div className = "graphcontainer">
 						<Graph/>
 					</div>
+                    <div className = "tweetcontainer">
+                        <TopTweets ids={ids}/>
+                    </div>
 					<Route exact path='/query'/>
 				</div>
 		);
