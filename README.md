@@ -35,31 +35,8 @@ Estee Tcheau
 
 #### 3. In the project directory, start the app in development mode by running the command
 
-`npm start`   
+`./run.sh`
 
-#### 4. If error 0308010C for unsupported envelope routines run command
-`export NODE_OPTIONS=--openssl-legacy-provider`
-
-#### 5. In the project directory, start the server by running the command
-
-`node src/server.js`  
-
-Note, you will likely need to open two separate command line windows for steps 3 and 4.
-
-#### 6. Open the local host
+#### 4. Open the local host
 
 Go to http://localhost:3000 in your browser to start the application!
-
-## How to run the Django backend
-
-#### 1. Navigate to the Wingspan folder and run
-
-`pip install -r requirements.txt`
-
-#### 2. Retrieve the .env file and place it in Wingspan/wingspan/wingspan
-
-#### 3. Navigate to Wingspan/wingspan and run
-
-`python manage.py runserver`
-
-Note: To run with Python 3, you may need to do `python3 manage.py runserver`
