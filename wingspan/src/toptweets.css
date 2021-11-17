@@ -1,0 +1,10 @@
+.toptweets{
+	color: black;
+	height: 100vh;
+    width: 25vw;
+}
+
+.tweets{
+    overflow-y: auto;
+    background-color: #EBEBEB;
+}
