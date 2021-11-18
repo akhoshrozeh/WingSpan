@@ -10,7 +10,8 @@ import TopTweets from './toptweets.js';
 import './graphpage.css';
 import './background.css';
 
-const ids = ["20", "1460657276142895123"]
+const top_tweets = [{id:"20", engagement:10}, 
+                    {id:"1460657276142895123", engagement:20}];
 
 class GraphPage extends React.Component 
 {
@@ -32,7 +33,7 @@ class GraphPage extends React.Component
 						<Graph/>
 					</div>
                     <div className = "tweetcontainer">
-                        <TopTweets ids={ids}/>
+                        <TopTweets ids={top_tweets}/>
                     </div>
 					<Route exact path='/query'/>
 				</div>

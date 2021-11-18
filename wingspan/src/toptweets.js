@@ -7,8 +7,8 @@ class TopTweets extends React.Component {
         /* Calls React Component Constructor */
         super(props);
 
-		/* Constructor */
-            this.tweets = props.ids.map((tid) => <TweetEmbed id={tid} />);
+        props.ids.sort((a,b) => b.engagement - a.engagement);
+        this.tweets = props.ids.map((tweet) => <TweetEmbed id={tweet.id} />);
     }
 
     render() {
