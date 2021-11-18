@@ -17,22 +17,8 @@ app.post('/', async function (req, res) {
 	
 	request((djangoSearch + searchQuery), async function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			/* Retrieves the body (data) from Django server consisting of tweets */
-			let tweets = JSON.parse(body);
-			/* Example on how to access the data */
-			console.log(tweets[0]);
-		}
-	});	
-	
-	console.log(searchQuery);
-});
+			console.log(searchQuery);
 
-/* Retrieves search query from navbar and sets to searchQuery */
-app.post('/main', function (req, res) {
-	searchQuery = req.body.query;
-	
-	request((djangoSearch + searchQuery), async function (error, response, body) {
-		if (!error && response.statusCode == 200) {
 			/* Retrieves the body (data) from Django server consisting of tweets */
 			let tweets = JSON.parse(body);
 			/* Example on how to access the data */
