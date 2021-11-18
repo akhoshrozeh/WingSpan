@@ -29,9 +29,10 @@ Estee Tcheau
 
 `git clone https://github.com/`
 
-#### 2. In the project directory, install the dependencies by running the command
+#### 2. In the project directory, install the dependencies by running the commands
 
 `npm install`
+`pip install -r requirements.txt`
 
 #### 3. In the project directory, start the app in development mode by running the command
 
