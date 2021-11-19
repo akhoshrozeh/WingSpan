@@ -32,7 +32,7 @@ def api(request):
     if query is not None:
         sa = SentimentAnalyzer()
         tc = TwitterCom()
-        tweets = tc.findTweets(query, 10)
+        tweets = tc.findTweets(query)
         output = sa.analyzeTweets(tweets)
         output = list(map(lambda t: toJson(t), tweets))
         return JsonResponse(output, safe=False)
