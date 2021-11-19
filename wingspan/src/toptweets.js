@@ -1,8 +1,8 @@
-import React from 'react';
+import { Component } from 'react';
 import "./toptweets.css";
 import TweetEmbed from 'react-tweet-embed';
 
-class TopTweets extends React.Component {
+class TopTweets extends Component {
     constructor(props) {
         /* Calls React Component Constructor */
         super(props);
@@ -13,7 +13,7 @@ class TopTweets extends React.Component {
 
     render() {
         return (
-            <div class="tweetcontainer">
+            <div>
                     {this.tweets}
             </div>
         );
