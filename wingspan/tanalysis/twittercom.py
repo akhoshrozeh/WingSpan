@@ -57,7 +57,7 @@ class TwitterCom():
         try:
             tweet_list = self.api.search_tweets(input.query)
             for tweet in tweet_list:
-                this_tweet = Tweet(id=tweet.id, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
+                this_tweet = Tweet(tid=tweet.id, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
                     verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
                 if input.users is not None:
                     if this_tweet.username in input.users:
@@ -75,7 +75,7 @@ class TwitterCom():
         top_tweets = []
         for tweet in tweets:
             if tweet.verified is True:
-                this_tweet = TopTweetData(id=tweet.id, engagement=(2*tweet.retweets + tweet.likes))
+                this_tweet = TopTweetData(tid=tweet.id, engagement=(2*tweet.retweets + tweet.likes))
                 top_tweets.append(this_tweet)
         return top_tweets
 

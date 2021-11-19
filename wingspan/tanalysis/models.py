@@ -16,7 +16,7 @@ class Tweet(models.Model):
         sentiment_magnitude (FloatField): the sentiment magnitude from Google's NLP API
         
     """
-    id = models.IntegerField()
+    tid = models.IntegerField()
     text = models.CharField(max_length=280)
     username = models.CharField(max_length=255, null=True)
     timestamp = models.DateTimeField()
@@ -24,20 +24,20 @@ class Tweet(models.Model):
     retweets = models.IntegerField()
     verified = models.BooleanField(null=True)
 
-
 class ScoreData(models.Model):
     timestamp = models.DateTimeField()
     score = models.FloatField()
 
-
 class TopTweetData(models.Model):
-    id = models.IntegerField()
+    tid = models.IntegerField()
     engagement = models.IntegerField()
-
 
 class TwitterOutputData(models.Model):
     scores = models.ManyToManyField(ScoreData)
     top_tweets = models.ManyToManyField(TopTweetData)
+
+class User(models.Model):
+    username = models.CharField(max_length=15)
 
 class Query(models.Model):
     """
@@ -50,4 +50,4 @@ class Query(models.Model):
         
     """
     query = models.CharField(max_length=500)
-    users = models.ManyToManyField(models.CharField(max_length=15), null=True)
+    users = models.ManyToManyField(User, null=True)

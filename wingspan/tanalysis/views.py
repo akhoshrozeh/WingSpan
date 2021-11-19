@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 
-from wingspan.tanalysis.models import TwitterOutputData
+from tanalysis.models import TwitterOutputData
 from .twittercom import TwitterCom
 from .sentiment import SentimentAnalyzer
 import json
