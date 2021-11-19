@@ -1,10 +1,8 @@
 from google.cloud import language_v1
-from tanalysis.models import Tweet
+from tanalysis.models import Tweet, ScoreData
 from typing import List
 import os
 import random
-
-from wingspan.tanalysis.models import ScoreData, TopTweetData, TwitterOutputData
 
 class SentimentAnalyzer():
     """
@@ -46,22 +44,19 @@ class SentimentAnalyzer():
             None
             
         """
-        output_data = TwitterOutputData()
+        all_score_data = []
 
         if self.analyzer:
             for tweet in tweets:
                 document = language_v1.Document(content=tweet.text, type_=self.type)
                 response = self.analyzer.analyze_sentiment(request={'document': document})
-                score_data = ScoreData(score=response.document_sentiment.score, 
-                    magnitude=response.document_sentiment.magnitude, timestamp=tweet.timestamp)
-                this_tweet = TopTweetData(id=tweet.id, engagement=(2*tweet.retweets+tweet.likes))
-                output_data.scores.append(score_data)
-                output_data.top_tweets.append(this_tweet)
+                score_data = ScoreData(score=(response.document_sentiment.score * response.document_sentiment.magnitude), 
+                    timestamp=tweet.timestamp)
+                all_score_data.append(score_data)
         else:
             for tweet in tweets:
-                score_data = ScoreData(score=random.uniform(-1, 1), 
-                    magnitude=random.uniform(0, 100), timestamp=tweet.timestamp)
-                this_tweet = TopTweetData(id=tweet.id, engagement=(2*tweet.retweets+tweet.likes))
-                output_data.scores.append(score_data)
-                output_data.top_tweets.append(this_tweet)
+                score_data = ScoreData(score=(random.uniform(-1, 1) * random.uniform(0, 100)), timestamp=tweet.timestamp)
+                all_score_data.append(score_data)
+
+        return all_score_data
 

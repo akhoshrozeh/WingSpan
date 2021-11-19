@@ -1,9 +1,10 @@
-from tanalysis.models import Tweet
+from dotenv import load_dotenv
+from tanalysis.models import Tweet, Query, TopTweetData
+import logging
+import os
 import tweepy
 from tweepy import OAuthHandler
-import logging
-from dotenv import load_dotenv
-import os
+from typing import List
 
 
 class TwitterCom():
@@ -36,7 +37,7 @@ class TwitterCom():
         except:
             logging.error("Authentication Error.")
 
-    def findTweets(self, input):
+    def findTweets(self, input: Query):
         """
 
         When a query has been made, findTweets() will run a search to Twitter's API based on the query.
@@ -69,4 +70,13 @@ class TwitterCom():
         except tweepy.TweepyException as e:
             logging.error('Error:' + str(e))
             return all_tweets
+
+    def getTopTweets(tweets: List[Tweet]):
+        top_tweets = []
+        for tweet in tweets:
+            if tweet.verified is True:
+                this_tweet = TopTweetData(id=tweet.id, engagement=(2*tweet.retweets + tweet.likes))
+                top_tweets.append(this_tweet)
+        return top_tweets
+
 

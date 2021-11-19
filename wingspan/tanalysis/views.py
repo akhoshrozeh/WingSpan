@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+
+from wingspan.tanalysis.models import TwitterOutputData
 from .twittercom import TwitterCom
 from .sentiment import SentimentAnalyzer
 
@@ -33,8 +35,10 @@ def api(request):
         sa = SentimentAnalyzer()
         tc = TwitterCom()
         tweets = tc.findTweets(query)
-        output = sa.analyzeTweets(tweets)
-        output = list(map(lambda t: toJson(t), tweets))
+        scores = sa.analyzeTweets(tweets)
+        top_tweets = tc.getTopTweets(tweets)
+        output = TwitterOutputData(scores=scores, top_tweets=top_tweets)
+        output = list(map(lambda t: toJson(t), output))
         return JsonResponse(output, safe=False)
     else:
         return HttpResponseBadRequest()

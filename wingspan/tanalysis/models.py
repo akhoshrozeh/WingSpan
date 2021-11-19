@@ -28,7 +28,6 @@ class Tweet(models.Model):
 class ScoreData(models.Model):
     timestamp = models.DateTimeField()
     score = models.FloatField(null=True)
-    magnitude = models.FloatField(null=True)
 
 
 class TopTweetData(models.Model):
