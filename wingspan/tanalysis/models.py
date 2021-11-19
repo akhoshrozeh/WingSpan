@@ -27,7 +27,7 @@ class Tweet(models.Model):
 
 class ScoreData(models.Model):
     timestamp = models.DateTimeField()
-    score = models.FloatField(null=True)
+    score = models.FloatField()
 
 
 class TopTweetData(models.Model):
@@ -50,4 +50,4 @@ class Query(models.Model):
         
     """
     query = models.CharField(max_length=500)
-    users = models.ManyToManyField(models.CharField(max_length=15))
+    users = models.ManyToManyField(models.CharField(max_length=15), null=True)

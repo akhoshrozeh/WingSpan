@@ -4,13 +4,9 @@ from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from wingspan.tanalysis.models import TwitterOutputData
 from .twittercom import TwitterCom
 from .sentiment import SentimentAnalyzer
+import json
 
 # Create your views here.
-def toJson(tweet):
-    return {'text' : tweet.text, 'username' : tweet.username,
-            'timestamp': tweet.timestamp, 'verified' : tweet.verified,
-            'sentiment_score' : tweet.sentiment_score,
-            'sentiment_magnitude' : tweet.sentiment_magnitude}
 
 def index(request):
     """
@@ -23,7 +19,7 @@ def index(request):
         tc = TwitterCom()
         tweets = tc.findTweets(query, 10)
         sa.analyzeTweets(tweets)
-        tweets = list(map(lambda t: toJson(t), tweets))
+        tweets = list(map(lambda t: json.dumps(t), tweets))
         html = "<html><body> %s </body></html>" % tweets
         return HttpResponse(html)
     else:
@@ -37,8 +33,7 @@ def api(request):
         tweets = tc.findTweets(query)
         scores = sa.analyzeTweets(tweets)
         top_tweets = tc.getTopTweets(tweets)
-        output = TwitterOutputData(scores=scores, top_tweets=top_tweets)
-        output = list(map(lambda t: toJson(t), output))
+        output = json.dumps(TwitterOutputData(scores=scores, top_tweets=top_tweets))
         return JsonResponse(output, safe=False)
     else:
         return HttpResponseBadRequest()
