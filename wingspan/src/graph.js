@@ -19,7 +19,28 @@ const result = {top_tweets: [{id:"20", engagement:10}, {id:"1460657276142895123"
 			{timestamp: '2021-11-19T18:55:26Z', score: 90}]};
 
 result.scores.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+	/*
+	const data = [];
+	data[0,0] = ["Hour", "Sentiment Value"];
+ 	for (var i =1; i < days.length+1; i++) {
+		datas.push([days[i],scores[i]]);
+	};
+	*/
+	/*
+	for (var j=0; j< days.length; j++) {
 
+		if days[j] = days[j+1] { //average the scores if they are for the same day
+			scores[j] = (scores[j] + scores[j+1]) / 2;
+	}
+	*/
+
+// const data = [
+// 	["Hour", "Sentiment Value"],
+// 	[result.scores[0].timestamp, result.scores[0].score]
+
+// ];
+// let data = [];
+// data.push(["Hour", "Sentiment Value"]);
 var columns = [["Hour", "Sentiment Value"]];
 // data.push(result.scores.map(object => [object.timestamp, object.score]));
 var temp = result.scores.map(object => [object.timestamp, object.score]);
