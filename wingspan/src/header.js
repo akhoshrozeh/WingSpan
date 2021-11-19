@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import { Component } from "react";
 
 import './header.css';
 
-class Header extends React.Component 
+class Header extends Component 
 {
 	/* Header class forms the words and blue border */
 	render() 

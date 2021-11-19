@@ -1,9 +1,7 @@
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
-
+import { Component } from "react";
 import { Chart } from "react-google-charts";
+
 import './graph.css';
-//import app from './server.js'
 
 //note: index of days corresponds to score for that day
 //want to average and plot scores for each day
@@ -60,7 +58,7 @@ const options = {
 	legend: { position: "bottom" }
 };
 
-class Graph extends React.Component {
+class Graph extends Component {
 	render() {
         return (	
 			<div className = "chartcontainer">

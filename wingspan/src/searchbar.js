@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import { Component } from "react";
+
 import './searchbar.css';
 
-class SearchBar extends React.Component{
+class SearchBar extends Component{
 	constructor(props) {
 		/* Calls React Component Constructor */
 		super(props);

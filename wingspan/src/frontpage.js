@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import { Component } from "react";
 
 import Header from './header.js';
 import SearchBar from './searchbar.js';
 import Logo from './logo.js';
+
 import './frontpage.css';
 import './background.css';
 
-class FrontPage extends React.Component
+class FrontPage extends Component
 {
 	render()
 	{

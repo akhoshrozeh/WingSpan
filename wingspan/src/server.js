@@ -16,7 +16,7 @@ app.post('/', async function (req, res) {
 	searchQuery = req.body.query;
 	
 	request((djangoSearch + searchQuery), async function (error, response, body) {
-		if (!error && response.statusCode == 200) {
+		if (!error && response.statusCode === 200) {
 			console.log(searchQuery);
 
 			/* Retrieves the body (data) from Django server consisting of tweets */

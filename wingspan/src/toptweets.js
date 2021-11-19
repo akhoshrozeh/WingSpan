@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import "./toptweets.css";
 import TweetEmbed from 'react-tweet-embed';
+
+import "./toptweets.css";
 
 class TopTweets extends Component {
     constructor(props) {

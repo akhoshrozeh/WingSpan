@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import { Component } from "react";
 
 import './logo.css';
 
-class Logo extends React.Component 
+class Logo extends Component 
 {
 	/* Logo class shows Twitter logo */
 	render() 
