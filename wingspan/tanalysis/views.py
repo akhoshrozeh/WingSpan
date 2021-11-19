@@ -33,8 +33,8 @@ def api(request):
         sa = SentimentAnalyzer()
         tc = TwitterCom()
         tweets = tc.findTweets(query, 10)
-        sa.analyzeTweets(tweets)
-        tweets = list(map(lambda t: toJson(t), tweets))
-        return JsonResponse(tweets, safe=False)
+        output = sa.analyzeTweets(tweets)
+        output = list(map(lambda t: toJson(t), tweets))
+        return JsonResponse(output, safe=False)
     else:
         return HttpResponseBadRequest()

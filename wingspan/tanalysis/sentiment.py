@@ -4,6 +4,8 @@ from typing import List
 import os
 import random
 
+from wingspan.tanalysis.models import ScoreData, TopTweetData, TwitterOutputData
+
 class SentimentAnalyzer():
     """
 
@@ -44,16 +46,22 @@ class SentimentAnalyzer():
             None
             
         """
+        output_data = TwitterOutputData()
+
         if self.analyzer:
             for tweet in tweets:
                 document = language_v1.Document(content=tweet.text, type_=self.type)
                 response = self.analyzer.analyze_sentiment(request={'document': document})
-                tweet.sentiment_score = response.document_sentiment.score
-                tweet.sentiment_magnitude = response.document_sentiment.magnitude
-                tweet.save()
+                score_data = ScoreData(score=response.document_sentiment.score, 
+                    magnitude=response.document_sentiment.magnitude, timestamp=tweet.timestamp)
+                this_tweet = TopTweetData(id=tweet.id, engagement=(2*tweet.retweets+tweet.likes))
+                output_data.scores.append(score_data)
+                output_data.top_tweets.append(this_tweet)
         else:
             for tweet in tweets:
-                tweet.sentiment_score = random.uniform(-1, 1)
-                tweet.sentiment_magnitude = random.uniform(0, 100)
-                tweet.save()
+                score_data = ScoreData(score=random.uniform(-1, 1), 
+                    magnitude=random.uniform(0, 100), timestamp=tweet.timestamp)
+                this_tweet = TopTweetData(id=tweet.id, engagement=(2*tweet.retweets+tweet.likes))
+                output_data.scores.append(score_data)
+                output_data.top_tweets.append(this_tweet)
 

@@ -36,7 +36,7 @@ class TwitterCom():
         except:
             logging.error("Authentication Error.")
 
-    def findTweets(self, keyword, count):
+    def findTweets(self, input):
         """
 
         When a query has been made, findTweets() will run a search to Twitter's API based on the query.
@@ -54,17 +54,17 @@ class TwitterCom():
         """
         all_tweets = []
         try:
-            if count == 0:
-                return all_tweets
-            tweet_list = self.api.search_tweets(keyword, count=count)
+            tweet_list = self.api.search_tweets(input.query)
             for tweet in tweet_list:
-                this_tweet = Tweet(text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
-                    verified=tweet.user.verified)
-                if tweet.retweet_count > 0:
-                    if tweet.text not in all_tweets:
-                        all_tweets.append(this_tweet)
+                this_tweet = Tweet(id=tweet.id, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
+                    verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
+                if input.users is not None:
+                    if this_tweet.username in input.users:
+                        if tweet.retweeted is False:
+                            all_tweets.append(this_tweet)
                 else:
-                    all_tweets.append(this_tweet)
+                    if tweet.retweeted is False:
+                        all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
             logging.error('Error:' + str(e))
