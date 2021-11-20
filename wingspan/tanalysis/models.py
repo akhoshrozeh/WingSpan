@@ -16,7 +16,7 @@ class Tweet(models.Model):
         sentiment_magnitude (FloatField): the sentiment magnitude from Google's NLP API
         
     """
-    tid = models.IntegerField()
+    tid = models.CharField(max_length=255)
     text = models.CharField(max_length=280)
     username = models.CharField(max_length=255, null=True)
     timestamp = models.DateTimeField()
@@ -50,4 +50,4 @@ class Query(models.Model):
         
     """
     query = models.CharField(max_length=500)
-    users = models.ManyToManyField(User, null=True)
+    #users = models.ManyToManyField(User, blank=True)

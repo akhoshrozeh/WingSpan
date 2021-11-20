@@ -3,6 +3,7 @@ from tanalysis.models import Tweet, ScoreData
 from typing import List
 import os
 import random
+import datetime
 
 class SentimentAnalyzer():
     """
@@ -55,7 +56,7 @@ class SentimentAnalyzer():
                 all_score_data.append(score_data)
         else:
             for tweet in tweets:
-                score_data = ScoreData(score=(random.uniform(-1, 1) * random.uniform(0, 100)), timestamp=tweet.timestamp)
+                score_data = {"score":(random.uniform(-1, 1) * random.uniform(0, 100)), "timestamp":tweet.timestamp.strftime("%m-%d-%yT%H:%M:%SZ")}
                 all_score_data.append(score_data)
 
         return all_score_data

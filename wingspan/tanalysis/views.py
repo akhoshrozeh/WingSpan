@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 
-from tanalysis.models import TwitterOutputData
+from tanalysis.models import Query, TwitterOutputData
 from .twittercom import TwitterCom
 from .sentiment import SentimentAnalyzer
 import json
@@ -26,14 +26,16 @@ def index(request):
         return HttpResponseBadRequest()
 
 def api(request):
-    query = request.GET.get('query',None)
-    if query is not None:
+    query_str = request.GET.get('query',None)
+    users = request.GET.get('users', None)
+    if query_str is not None:
         sa = SentimentAnalyzer()
         tc = TwitterCom()
+        query = Query(query=query_str)
         tweets = tc.findTweets(query)
         scores = sa.analyzeTweets(tweets)
         top_tweets = tc.getTopTweets(tweets)
-        output = json.dumps(TwitterOutputData(scores=scores, top_tweets=top_tweets))
+        output = json.dumps({"scores":scores, "top_tweets":top_tweets})
         return JsonResponse(output, safe=False)
     else:
         return HttpResponseBadRequest()
