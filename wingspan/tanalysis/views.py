@@ -32,6 +32,7 @@ def api(request):
         sa = SentimentAnalyzer()
         tc = TwitterCom()
         query = Query(query=query_str)
+        query.save()
         tweets = tc.findTweets(query)
         scores = sa.analyzeTweets(tweets)
         top_tweets = tc.getTopTweets(tweets)

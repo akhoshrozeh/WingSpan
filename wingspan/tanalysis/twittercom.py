@@ -59,15 +59,13 @@ class TwitterCom():
             for tweet in tweet_list:
                 this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
                     verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
-                #if input.users.exists():
-                #    if this_tweet.username in input.users:
-                #        if not tweet.retweeted:
-                #            all_tweets.append(this_tweet)
-                #else:
-                #    if not tweet.retweeted:
-                #        all_tweets.append(this_tweet)
-                if not tweet.retweeted:
-                    all_tweets.append(this_tweet)
+                if input.users.exists():
+                   if this_tweet.username in input.users:
+                       if not tweet.retweeted:
+                           all_tweets.append(this_tweet)
+                else:
+                   if not tweet.retweeted:
+                       all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
             logging.error('Error:' + str(e))

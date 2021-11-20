@@ -41,8 +41,8 @@ class Query(models.Model):
     Attributes:
         search (CharField): the search query given by the user
         tweets (ManyToManyField(Tweet)): Tweets that were returned by the search from Twitter's API
-        user (ForeignKey): User that made the query
+        users (ManyToManyField(Tweet)): Twitter users to filter search results by
     """
     query = models.CharField(max_length=500)
     tweets = models.ManyToManyField(Tweet, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    users = models.ManyToManyField(User, blank=True)
