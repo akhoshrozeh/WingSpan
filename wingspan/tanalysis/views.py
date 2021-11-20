@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 
-from tanalysis.models import Query, TwitterOutputData
+from tanalysis.models import Query
 from .twittercom import TwitterCom
 from .sentiment import SentimentAnalyzer
 import json

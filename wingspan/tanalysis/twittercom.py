@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from tanalysis.models import Tweet, Query, TopTweetData
+from tanalysis.models import Tweet, Query
 import logging
 import os
 import tweepy
@@ -55,7 +55,7 @@ class TwitterCom():
         """
         all_tweets = []
         try:
-            tweet_list = self.api.search_tweets(input.query)
+            tweet_list = self.api.search_tweets(input.query, lang="en")
             for tweet in tweet_list:
                 this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
                     verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
