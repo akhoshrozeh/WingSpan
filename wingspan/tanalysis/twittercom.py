@@ -55,7 +55,7 @@ class TwitterCom():
         """
         all_tweets = []
         try:
-            tweet_list = self.api.search_tweets(input.query, lang="en")
+            tweet_list = self.api.search_tweets(input.query, lang="en", count=100)
             for tweet in tweet_list:
                 this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
                     verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
