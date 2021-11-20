@@ -1,9 +1,10 @@
-from tanalysis.models import Tweet
+from dotenv import load_dotenv
+from tanalysis.models import Tweet, Query
+import logging
+import os
 import tweepy
 from tweepy import OAuthHandler
-import logging
-from dotenv import load_dotenv
-import os
+from typing import List
 
 
 class TwitterCom():
@@ -36,7 +37,7 @@ class TwitterCom():
         except:
             logging.error("Authentication Error.")
 
-    def findTweets(self, keyword, count):
+    def findTweets(self, input: Query):
         """
 
         When a query has been made, findTweets() will run a search to Twitter's API based on the query.
@@ -54,19 +55,28 @@ class TwitterCom():
         """
         all_tweets = []
         try:
-            if count == 0:
-                return all_tweets
-            tweet_list = self.api.search_tweets(keyword, count=count)
+            tweet_list = self.api.search_tweets(input.query, lang="en", count=100)
             for tweet in tweet_list:
-                this_tweet = Tweet(text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
-                    verified=tweet.user.verified)
-                if tweet.retweet_count > 0:
-                    if tweet.text not in all_tweets:
-                        all_tweets.append(this_tweet)
+                this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
+                    verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
+                if input.users.exists():
+                   if this_tweet.username in input.users:
+                       if not tweet.retweeted:
+                           all_tweets.append(this_tweet)
                 else:
-                    all_tweets.append(this_tweet)
+                   if not tweet.retweeted:
+                       all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
             logging.error('Error:' + str(e))
             return all_tweets
+
+    def getTopTweets(self, tweets: List[Tweet]):
+        top_tweets = []
+        for tweet in tweets:
+            #if tweet.verified:
+                this_tweet = {"tid":tweet.tid, "engagement":(2*tweet.retweets + tweet.likes)}
+                top_tweets.append(this_tweet)
+        return top_tweets
+
 

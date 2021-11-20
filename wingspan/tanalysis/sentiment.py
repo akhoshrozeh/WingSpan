@@ -3,6 +3,7 @@ from tanalysis.models import Tweet
 from typing import List
 import os
 import random
+import datetime
 
 class SentimentAnalyzer():
     """
@@ -44,16 +45,20 @@ class SentimentAnalyzer():
             None
             
         """
+        all_score_data = []
+
         if self.analyzer:
             for tweet in tweets:
                 document = language_v1.Document(content=tweet.text, type_=self.type)
                 response = self.analyzer.analyze_sentiment(request={'document': document})
-                tweet.sentiment_score = response.document_sentiment.score
-                tweet.sentiment_magnitude = response.document_sentiment.magnitude
+                tweet.score = response.document_sentiment.score * response.document_sentiment.magnitude
                 tweet.save()
+                all_score_data.append({'score': tweet.score, 'timestamp': tweet.timestamp.strftime("%m-%d-%yT%H:%M:%SZ")})
         else:
             for tweet in tweets:
-                tweet.sentiment_score = random.uniform(-1, 1)
-                tweet.sentiment_magnitude = random.uniform(0, 100)
+                tweet.score  = (random.uniform(-1, 1) * random.uniform(0, 100))
                 tweet.save()
+                all_score_data.append({'score': tweet.score, 'timestamp': tweet.timestamp.strftime("%m-%d-%yT%H:%M:%SZ")})
+
+        return all_score_data
 
