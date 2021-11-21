@@ -1,0 +1,7 @@
+.tweetcontainer{
+	position: fixed;
+	top: 25%;
+    right: 20px;
+    height: 75%;
+    overflow-y: auto;
+}

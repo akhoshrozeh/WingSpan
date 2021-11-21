@@ -1,0 +1,14 @@
+	.logocontainer{
+		position: fixed; /* Sets position to not move */
+		z-index: 1; /* Places the logo in front of the graph */
+		bottom: 20px; /* Sets distance from bottom edge */
+		left: 20px; /* Sets distance from left edge */
+	}
+	
+	.headercontainer{
+		z-index: 1;
+		position: fixed; /* Sets the header to the top */
+		width: 100%; /* Stretches header to ends of screen */
+		top: 0px; /* Sets header to top edge */
+		left: 0px; /* Sets header to left edge */
+	}

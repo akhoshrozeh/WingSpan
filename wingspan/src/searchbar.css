@@ -1,0 +1,24 @@
+	input[type=text]{ /* This styling is used for all input type text for all JS files */
+		position: absolute; /* Position relative to be moved */
+		font-family: Helvetica; /* Sets the font */
+		border: 2px solid silver; /* Colors the border pre-click */
+		border-radius: 2%; /* Rounds the text box edges*/
+		
+		min-width: 400px; /* Width of text box */
+		min-height: 41px; /* Sets size for text box */
+	}
+	
+	.searchButton{
+		margin-left: 910%; /* Space between search and button */
+		
+		background-image: url(./search.JPG); /* Sets button image */
+		background-color: white; /* Sets background color for button */
+		background-repeat: no-repeat; /* Turns off repeating image */
+		background-size: 60%; /* Scales the search button image to size */
+		background-position: center; /* Centers the button image */
+		
+		border: 2px solid silver; /* Border around the button */
+		border-radius: 50%; /* Rounds the button */
+		min-height: 45px; /* Sets the height */
+		min-width: 45px; /* Sets the width */
+	}
