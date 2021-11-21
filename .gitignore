@@ -3,3 +3,4 @@
 !/.gitignore
 wingspan-331100-af724c87a151.json
 .env
+db.sqlite3
