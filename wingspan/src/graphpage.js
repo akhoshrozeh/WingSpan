@@ -14,7 +14,7 @@ class GraphPage extends Component
 {   
     constructor(props) {
         super(props)
-        this.state = {result: {}}
+        this.state = {result: null}
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
