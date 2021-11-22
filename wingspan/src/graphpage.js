@@ -36,8 +36,8 @@ class GraphPage extends Component
             graph = <div className = "graphcontainer"><Graph data={result.scores}/></div>;
             tweets = <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div>;
         } else {
-            graph = "";
-            tweets = "";
+            graph = null;
+            tweets = null;
         }
 
 		return (
