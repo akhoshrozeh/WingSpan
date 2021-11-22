@@ -1,6 +1,0 @@
-	.frontsearchbarcontainer{
-		position: fixed; /* Keeps search bar constant on page */
-		top: 50%; /* Sets distance from top edge */
-		left: 40%; /* Sets distance from left edge */
-	}
-
