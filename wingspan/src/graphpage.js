@@ -10,8 +10,8 @@ import TopTweets from './toptweets.js';
 import './graphpage.css';
 import './background.css';
 
-class GraphPage extends Component 
-{   
+class GraphPage extends Component
+{
     constructor(props) {
         super(props)
         this.state = {result: null}
@@ -19,7 +19,7 @@ class GraphPage extends Component
     }
 
     handleSubmit(query) {
-            fetch('http://localhost:8000/api?query=' + query, 
+            fetch('http://localhost:8000/api?query=' + query,
                     { method: 'GET', headers: {'Content-Type': '/application/json'} })
             .then(resp => resp.json())
             .then(data => this.setState({result: data}))
@@ -27,21 +27,20 @@ class GraphPage extends Component
     }
 
 	/* Render the graph page, add page url with query once data is retrieved form Express server */
-	render() 
+	render()
 	{
         const result = JSON.parse(this.state.result);
         // Not sure why we need to JSON.parse here, but it somehow became a string
-        let graph, tweets;
+        let display;
         if (result) {
-            graph = <div className = "graphcontainer"><Graph data={result.scores}/></div>;
-            tweets = <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div>;
+            display = <><div className = "graphcontainer"><Graph data={result.scores}/></div>
+                    <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div></>;
         } else {
-            graph = null;
-            tweets = null;
+            display = <div className = "graphcontainer"><h1>Welcome to Wingspan!</h1><h3>Please submit a query to receive Tweet analysis.</h3></div>
         }
 
 		return (
-				<div>
+				<>
 					<nav className = "querysearchbarcontainer">
 						<SearchBar handleSubmit={this.handleSubmit}/>
 					</nav>
@@ -49,12 +48,10 @@ class GraphPage extends Component
                             <Logo/>
 					</div>
 					<div className = "headercontainer">
-						<Header/> 
-					</div>
-                    { graph }
-                    { tweets }
-					<Route exact path='/query'/>
-				</div>
+						<Header/>
+                    </div>
+                    { display }
+				</>
 		);
 	}
 }
