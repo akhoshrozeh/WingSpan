@@ -13,8 +13,8 @@ class LandingPage extends React.Component
 			<BrowserRouter>
 				<div>
 					<Switch>	
-						<Route exact path="/" component={FrontPage}/>	
-						<Route path="/query" component = {GraphPage}/>
+						<Route exact path="/" component={GraphPage}/>	
+						<Route path="/query" component={GraphPage}/>
 					</Switch>
 				</div>
 			</BrowserRouter>

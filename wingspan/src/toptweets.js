@@ -9,14 +9,13 @@ class TopTweets extends Component {
         super(props);
 
         props.ids.sort((a,b) => b.engagement - a.engagement);
-        
-        this.tweets = props.ids.map((tweet) => <TweetEmbed id={tweet.id} />);
+        this.tweets = props.ids.map((tweet) => <TweetEmbed id={tweet.tid} key={tweet.tid} />);
     }
 
     render() {
         return (
             <div>
-                    {this.tweets}
+                {this.tweets}
             </div>
         );
     }
