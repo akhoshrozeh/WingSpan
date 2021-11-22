@@ -7,7 +7,7 @@ const options = {
     width: "1200px",
     height:  "600px",
 	hAxis: {
-		title: 'Time',
+		title: 'Seconds',
 	},
 	vAxis: {
 		title: 'Sentiment Value',
@@ -33,48 +33,55 @@ class Graph extends Component {
         var counter = 0;
         var sum = 0;
         for (var i = 0; i < this.values.length; i++){
-            const date = new Date(this.values[i][0]);
-            const monthDay = (date.getMonth() + 1).toString() + '/' + (date.getDate()).toString();
-            if(!avgBucket.has(monthDay)){
-                avgBucket.set(monthDay, this.values[i][1]);
+            var date = new Date((this.values[i][0]).replace('T', ' '));
+            /*var monthDay = (date.getMonth() + 1).toString() + '/' + (date.getDate()).toString();*/
+            var secs = date.getSeconds();
+            if(!avgBucket.has(secs)){
+                avgBucket.set(secs, this.values[i][1]);
             }
             else{
-                sum = (avgBucket.get(monthDay)) + this.values[i][1];
+                sum = (avgBucket.get(secs)) + this.values[i][1];
                 counter++;
                 
                 if (i+1 < this.values.length){
-                    const aheadDate = new Date(this.values[i+1][0]);
-                    const aheadMonthDay = (aheadDate.getMonth() + 1).toString() + '/' + (aheadDate.getDate()).toString();
-                    if (monthDay != aheadMonthDay){
-                        avgBucket.set(monthDay, (sum/counter));
+                    var aheadDate = new Date(this.values[i+1][0]);
+                    /*var aheadMonthDay = (aheadDate.getMonth() + 1).toString() + '/' + (aheadDate.getDate()).toString();*/
+                    var aheadSecs = aheadDate.getSeconds();
+                    if (secs != aheadSecs){
+                        avgBucket.set(secs, (sum/counter));
                         counter = 0;
                         sum = 0;
                     }
                 }
                 else{
-                    avgBucket.set(monthDay, (sum/counter));
+                    avgBucket.set(secs, (sum/counter));
                     counter = 0;
                     sum = 0;
                 }
             }            
         }
-        
+        console.log(avgBucket);
         return avgBucket;
     }
     
     /* Converts Hashmap of data into graph data */
     createGraphData(){
-        const chartData = [["Date", "Sentiment Value"]];
+        const chartHeader = [["Seconds", "Sentiment Value"]];
+        const chartData = [];
         for (const [date, value] of this.averagesBucket.entries()){
             chartData.push([date, value]);
         }
         
-        return chartData;
+        return chartHeader.concat(chartData.sort(function(a, b){return a[0] - b[0]}));
     }
     
     /* The chartData creates the data for the graph */
 	render() {
-        const chartData = this.createGraphData();
+        var chartData = this.createGraphData();
+        if(chartData.length == 1){
+            chartData = [["Seconds", "Sentiment Value"], [0,0]];
+        }
+        
         console.log(chartData);
         return (	
                 <div className = "chartcontainer">
