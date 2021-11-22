@@ -4,18 +4,16 @@ import TweetEmbed from 'react-tweet-embed';
 import "./toptweets.css";
 
 class TopTweets extends Component {
-    constructor(props) {
-        /* Calls React Component Constructor */
-        super(props);
-
-        props.ids.sort((a,b) => b.engagement - a.engagement);
-        this.tweets = props.ids.map((tweet) => <TweetEmbed id={tweet.tid} key={tweet.tid} />);
+    showTweets(ids) {
+        let tweets = JSON.parse(JSON.stringify(ids));  // Deep copy
+        tweets.sort((a,b) => b.engagement - a.engagement);
+        return tweets.map((tweet) => <TweetEmbed id={tweet.tid} key={tweet.tid} />);
     }
 
     render() {
         return (
             <div>
-                {this.tweets}
+                {this.showTweets(this.props.ids)}
             </div>
         );
     }
