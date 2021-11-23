@@ -74,7 +74,7 @@ class TwitterCom():
     def getTopTweets(self, tweets: List[Tweet]):
         top_tweets = []
         for tweet in tweets:
-            #if tweet.verified:
+            if tweet.verified:
                 this_tweet = {"tid":tweet.tid, "engagement":(2*tweet.retweets + tweet.likes)}
                 top_tweets.append(this_tweet)
         return top_tweets
