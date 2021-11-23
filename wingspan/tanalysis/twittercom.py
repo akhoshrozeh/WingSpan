@@ -61,8 +61,9 @@ class TwitterCom():
             for tweet in tweet_list:
                 this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
                     verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
+                this_tweet.save()
                 if input.users.exists():
-                   if this_tweet.username in input.users:
+                   if this_tweet.username in input.users.all():
                        if not tweet.retweeted:
                            all_tweets.append(this_tweet)
                 else:

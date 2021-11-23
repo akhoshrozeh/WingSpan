@@ -27,7 +27,6 @@ class Tweet(models.Model):
     retweets = models.IntegerField(null=True)
     verified = models.BooleanField(null=True)
 
-
 class User(models.Model):
     username = models.CharField(max_length=15)
 
