@@ -54,6 +54,8 @@ class TwitterCom():
 
         """
         all_tweets = []
+        if input.query == "":
+            return all_tweets
         try:
             tweet_list = self.api.search_tweets(input.query, lang="en", count=100)
             for tweet in tweet_list:
