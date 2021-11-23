@@ -4,3 +4,16 @@
 		top: 3%; /* Spacing from top edge */
 		right: 500px; /* Spacing from right edge, use px so search bar moves with window resizing */
 	}
+
+    .graphcontainer{
+        position: fixed;
+        top: 15%;
+    }
+
+    .tweetcontainer{
+       position: fixed;
+       top: 20%;
+       right: 5%;
+       height: 75%;
+       overflow-y: auto;
+    }

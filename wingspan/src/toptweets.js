@@ -1,8 +1,6 @@
 import { Component } from 'react';
 import TweetEmbed from 'react-tweet-embed';
 
-import "./toptweets.css";
-
 class TopTweets extends Component {
     showTweets(ids) {
         let tweets = JSON.parse(JSON.stringify(ids));  // Deep copy
