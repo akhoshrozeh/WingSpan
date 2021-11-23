@@ -36,7 +36,7 @@ class Graph extends Component {
                     var aheadDate = new Date(values[i+1][0]);
                     /*var aheadMonthDay = (aheadDate.getMonth() + 1).toString() + '/' + (aheadDate.getDate()).toString();*/
                     var aheadSecs = aheadDate.getSeconds();
-                    if (secs != aheadSecs){
+                    if (secs !== aheadSecs){
                         avgBucket.set(secs, (sum/counter));
                         counter = 0;
                         sum = 0;
@@ -111,7 +111,7 @@ class Graph extends Component {
     drawAvgsChart(values){   
         const chartHeader = [["Seconds", "Sentiment Value"]];
         var data = chartHeader.concat(this.createGraphData(this.setAverages(values)));
-        if(values.length == 0){
+        if(values.length === 0){
             data = chartHeader.concat([[0, NaN]]);
             alert("No tweets with this query");
         }
@@ -141,7 +141,7 @@ class Graph extends Component {
     drawHistogramChart(values){
         const chartHeader = [['Tweets', 'Sentiment Value']];
         var data = chartHeader.concat(this.createGraphData(this.setHistories(values)));
-        if (values.length == 0){
+        if (values.length === 0){
             data = chartHeader.concat([[0, NaN]]);
             alert("No tweets with this query");
         }
@@ -171,7 +171,7 @@ class Graph extends Component {
     drawPosNegChart(values){
         const chartHeader = [["Seconds", "Positive Sentiment Value", "Negative Sentiment Value"]];
         var data = chartHeader.concat(this.setPosNeg(values));
-        if(values.length == 0){
+        if(values.length === 0){
             data = chartHeader.concat([[0, NaN, NaN]]);
             alert("No tweets with this query");
         }
@@ -199,19 +199,19 @@ class Graph extends Component {
     
     /* Handles the on click position */
     handleClick(position){
-        if(position == 0){
+        if(position === 0){
             this.setState({
                 curr_pos: 1
             });
         }
-        else if(position == 1){
+        else if(position === 1){
             this.setState({
                curr_pos: 2 
             });
             
 
         }
-        else if(position == 2){
+        else if(position === 2){
             this.setState({
                 curr_pos: 0
             });
@@ -220,13 +220,13 @@ class Graph extends Component {
     
     /* Calls the proper graph based on the current position */
     handleGraph(values){
-        if (this.state.curr_pos == 0){
+        if (this.state.curr_pos === 0){
             return this.drawAvgsChart(values);
         }
-        else if (this.state.curr_pos == 1){
+        else if (this.state.curr_pos === 1){
             return this.drawHistogramChart(values);
         }
-        else if (this.state.curr_pos == 2){        
+        else if (this.state.curr_pos === 2){        
             return this.drawPosNegChart(values);
         }
     }

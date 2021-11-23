@@ -33,8 +33,8 @@ class GraphPage extends Component
         // Not sure why we need to JSON.parse here, but it somehow became a string
         let display;
         if (result) {
-            graph = <Graph data={result.scores}/>;
-            tweets =<TopTweets ids={result.top_tweets}/>;
+            display = <><div className = "graphcontainer"><Graph data={result.scores}/></div>
+                        <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div></>;
         }
 
 		return (
@@ -48,13 +48,7 @@ class GraphPage extends Component
 					<div className = "headercontainer">
 						<Header/> 
 					</div>
-                    <div className = "graphcontainer">
-                        { graph }
-                        <div className = "tweetcontainer">
-                            { tweets }
-                        </div>
-                    </div>
-					<Route exact path='/query'/>
+                    {display}
 				</div>
 		);
 	}
