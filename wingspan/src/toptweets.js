@@ -9,11 +9,7 @@ class TopTweets extends Component {
     }
 
     render() {
-        return (
-            <div>
-                {this.showTweets(this.props.ids)}
-            </div>
-        );
+        return <>{this.showTweets(this.props.ids)}</>
     }
 }
 export default TopTweets;

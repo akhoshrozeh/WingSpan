@@ -10,8 +10,8 @@ import TopTweets from './toptweets.js';
 import './graphpage.css';
 import './background.css';
 
-class GraphPage extends Component 
-{   
+class GraphPage extends Component
+{
     constructor(props) {
         super(props)
         this.state = {result: null}
@@ -19,7 +19,7 @@ class GraphPage extends Component
     }
 
     handleSubmit(query) {
-            fetch('http://localhost:8000/api?query=' + query, 
+            fetch('http://localhost:8000/api?query=' + query,
                     { method: 'GET', headers: {'Content-Type': '/application/json'} })
             .then(resp => resp.json())
             .then(data => this.setState({result: data}))
@@ -27,17 +27,14 @@ class GraphPage extends Component
     }
 
 	/* Render the graph page, add page url with query once data is retrieved form Express server */
-	render() 
+	render()
 	{
         const result = JSON.parse(this.state.result);
         // Not sure why we need to JSON.parse here, but it somehow became a string
-        let graph, tweets;
+        let display;
         if (result) {
             graph = <Graph data={result.scores}/>;
             tweets =<TopTweets ids={result.top_tweets}/>;
-        } else {
-            graph = "";
-            tweets = "";
         }
 
 		return (
