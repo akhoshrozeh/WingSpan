@@ -26,9 +26,6 @@ class Tweet(models.Model):
     likes = models.IntegerField(null=True)
     retweets = models.IntegerField(null=True)
     verified = models.BooleanField(null=True)
-    score = models.FloatField(null=True)
-    engagement = models.IntegerField(null=True)
-
 
 class User(models.Model):
     username = models.CharField(max_length=15)
