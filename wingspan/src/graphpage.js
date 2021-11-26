@@ -1,8 +1,6 @@
 import { Component } from "react";
 import { Route } from 'react-router-dom';
 
-import EmbedTweet from 'react-tweet-embed';
-
 import SearchBar from './searchbar.js';
 import Logo from './logo.js';
 import Header from './header.js';
@@ -38,7 +36,7 @@ class GraphPage extends Component
             display = <><div className = "graphcontainer"><Graph data={result.scores}/></div>
                     <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div></>;
         } else {
-                display = <div className = "graphcontainer"><h1>Welcome to Wingspan!</h1><h3>Please submit a query to receive Tweet analysis.</h3><EmbedTweet id="20" /></div>
+                display = <div className = "graphcontainer"><h1>Welcome to Wingspan!</h1><h3>Please submit a query to receive Tweet analysis.</h3></div>
         }
 
 		return (
