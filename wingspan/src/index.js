@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import GraphPage from './graphpage.js';
-import FrontPage from './frontpage.js';
 
 class LandingPage extends React.Component
 {	
@@ -13,8 +12,7 @@ class LandingPage extends React.Component
 			<BrowserRouter>
 				<div>
 					<Switch>	
-						<Route exact path="/" component={FrontPage}/>	
-						<Route path="/query" component = {GraphPage}/>
+						<Route exact path="/" component={GraphPage}/>	
 					</Switch>
 				</div>
 			</BrowserRouter>

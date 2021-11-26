@@ -11,13 +11,13 @@
 	.searchButton{
 		margin-left: 910%; /* Space between search and button */
 		
-		background-image: url(./search.JPG); /* Sets button image */
+		background-image: url('./search.png'); /* Sets button image */
 		background-color: white; /* Sets background color for button */
 		background-repeat: no-repeat; /* Turns off repeating image */
-		background-size: 60%; /* Scales the search button image to size */
+		background-size: 130%; /* Scales the search button image to size */
 		background-position: center; /* Centers the button image */
 		
-		border: 2px solid silver; /* Border around the button */
+		border-color: silver; /* Border around the button */
 		border-radius: 50%; /* Rounds the button */
 		min-height: 45px; /* Sets the height */
 		min-width: 45px; /* Sets the width */

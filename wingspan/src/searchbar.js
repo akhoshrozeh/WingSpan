@@ -14,26 +14,12 @@ class SearchBar extends Component{
 		
 		/* Binds function names to their respective functions */
 		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleSubmit = props.handleSubmit.bind(this);
 	}
 	
 	/* Updates this.state.value whenever new character is input/deleted */
 	handleChange(event) {
 		this.setState({value: event.target.value});
-	}
-	
-	/* When submit button is clicked, this.state.value contains data from search box */
-	handleSubmit() {
-		fetch("http://localhost:3001/", {
-			method: 'POST',
-			mode: 'cors',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				query : this.state.value
-			})
-		})
-			.then(function(response){return response.json()})
-			.catch(error=>console.log(error))
 	}
 	
 	/* Creates text box that updates value for every keystroke */
@@ -44,7 +30,7 @@ class SearchBar extends Component{
 		return (
 			<div className = "searchBar">
 				<input type = "text" placeholder = "Search.." value = {this.state.value} onChange = {this.handleChange}/>
-				<button className = "searchButton" type = "submit" onClick={(e) => {this.handleSubmit(); window.location.href = '/query';}}/>
+				<button className = "searchButton" type = "submit" onClick={(e) => this.handleSubmit(this.state.value)}/>
 			</div>
 		);
 	}

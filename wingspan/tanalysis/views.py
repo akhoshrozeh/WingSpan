@@ -37,6 +37,9 @@ def api(request):
         scores = sa.analyzeTweets(tweets)
         top_tweets = tc.getTopTweets(tweets)
         output = json.dumps({"scores":scores, "top_tweets":top_tweets})
-        return JsonResponse(output, safe=False)
+        resp = JsonResponse(output, safe=False)
+        resp["Access-Control-Allow-Headers"] = "Access-Control-Allow-Headers,Access-Control-Allow-Origin,Content-Type"
+        resp["Access-Control-Allow-Origin"] = "http://localhost:3000"
+        return resp
     else:
         return HttpResponseBadRequest()
