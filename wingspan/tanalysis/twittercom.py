@@ -5,6 +5,7 @@ import os
 import tweepy
 from tweepy import OAuthHandler
 from typing import List
+import datetime
 
 
 class TwitterCom():
@@ -56,19 +57,23 @@ class TwitterCom():
         all_tweets = []
         if input.query == "":
             return all_tweets
+        tomorrow = datetime.datetime.now().date() + datetime.timedelta(days=1)
+        latest_id = 0
         try:
-            tweet_list = self.api.search_tweets(input.query, lang="en", count=100)
-            for tweet in tweet_list:
-                this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
-                    verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
-                this_tweet.save()
-                if input.users.exists():
-                   if this_tweet.username in input.users.all():
-                       if not tweet.retweeted:
-                           all_tweets.append(this_tweet)
-                else:
-                   if not tweet.retweeted:
-                       all_tweets.append(this_tweet)
+            for i in range(6, -1, -1):
+                tweet_list = self.api.search_tweets(input.query, lang="en", count=100, since_id=latest_id, until=str(tomorrow - datetime.timedelta(days=i)))
+                for tweet in tweet_list:
+                    this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
+                        verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
+                    this_tweet.save()
+                    latest_id = max(int(tweet.id_str), latest_id)
+                    if input.users.exists():
+                        if this_tweet.username in input.users:
+                            if not tweet.retweeted:
+                                all_tweets.append(this_tweet)
+                    else:
+                        if not tweet.retweeted:
+                            all_tweets.append(this_tweet)
             return all_tweets
         except tweepy.TweepyException as e:
             logging.error('Error:' + str(e))
