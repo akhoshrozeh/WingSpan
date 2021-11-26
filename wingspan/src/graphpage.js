@@ -34,13 +34,11 @@ class GraphPage extends Component
         let display;
         if (result) {
             display = <><div className = "graphcontainer"><Graph data={result.scores}/></div>
-                    <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div></>;
-        } else {
-                display = <div className = "graphcontainer"><h1>Welcome to Wingspan!</h1><h3>Please submit a query to receive Tweet analysis.</h3></div>
+                        <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div></>;
         }
 
 		return (
-				<>
+				<div>
 					<nav className = "querysearchbarcontainer">
 						<SearchBar handleSubmit={this.handleSubmit}/>
 					</nav>
@@ -48,10 +46,10 @@ class GraphPage extends Component
                             <Logo/>
 					</div>
 					<div className = "headercontainer">
-						<Header/>
-                    </div>
-                    { display }
-				</>
+						<Header/> 
+					</div>
+                    {display}
+				</div>
 		);
 	}
 }

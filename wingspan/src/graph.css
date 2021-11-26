@@ -1,5 +1,14 @@
-	.graphcontainer{
-		position: fixed; /* Graph does not move */
-		top: 15%; /* Spacing from top edge */
-		left: 20px; /* Spacing from left edge */
-	}
+    .graphButton{
+        position: absolute;
+        background-image: url('./swap.jpg');
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+        border-color: silver;
+        
+        left: 85%;
+        bottom: 15%;
+
+        width: 25px;
+        height: 25px;
+    }

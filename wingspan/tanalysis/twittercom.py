@@ -55,6 +55,8 @@ class TwitterCom():
 
         """
         all_tweets = []
+        if input.query == "":
+            return all_tweets
         tomorrow = datetime.datetime.now().date() + datetime.timedelta(days=1)
         latest_id = 0
         try:
