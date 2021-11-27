@@ -97,7 +97,7 @@ class Graph extends Component {
     
     /* Draws the average chart */
     drawAvgsChart(values){   
-        const chartHeader = [["Seconds", "Sentiment Value"]];
+        const chartHeader = [["Date", "Sentiment Value"]];
         var data = chartHeader.concat(this.createGraphData(this.setAverages(values)));
         if(values.length === 0){
             data = chartHeader.concat([[0, NaN]]);
@@ -108,7 +108,7 @@ class Graph extends Component {
            height: window.innerHeight * 0.7,
            width: window.innerWidth * 0.7,
 	       hAxis: {
-                title: 'Seconds',
+                title: 'Date',
 	       },
 	       vAxis: {
                 title: 'Sentiment Value',
@@ -157,7 +157,7 @@ class Graph extends Component {
     
     /* Draws the positive negative chart */
     drawPosNegChart(values){
-        const chartHeader = [["Seconds", "Positive Sentiment Value", "Negative Sentiment Value"]];
+        const chartHeader = [["Date", "Positive Sentiment Value", "Negative Sentiment Value"]];
         var data = chartHeader.concat(this.setPosNeg(values));
         if(values.length === 0){
             data = chartHeader.concat([[0, NaN, NaN]]);
@@ -168,7 +168,7 @@ class Graph extends Component {
            height: window.innerHeight * 0.7,
            width: window.innerWidth * 0.7,
 	       hAxis: {
-                title: 'Seconds',
+                title: 'Date',
 	       },
 	       vAxis: {
                 title: 'Sentiment Value',
