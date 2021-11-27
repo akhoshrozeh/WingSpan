@@ -17,43 +17,31 @@ class Graph extends Component {
     
     /* For averages graph, creates hashmap with data and averages score per day */
     setAverages(values){
-        const timescale = 60;
         let avgBucket = new Map();
-        var counter = 0;
-        var sum = 0;
+        
+        let dateSum = new Map();
+        let dateCount = new Map();  
         for (var i = 0; i < values.length; i++){
             var date = new Date((values[i][0]).replace('T', ' '));
-            /*var monthDay = (date.getMonth() + 1).toString() + '/' + (date.getDate()).toString();*/
-            var secs = date.getSeconds();
-            if(!avgBucket.has(secs)){
-                avgBucket.set(secs, values[i][1]);
+            var dateStr = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
+
+            if(!dateSum.has(dateStr)){
+                dateSum.set(dateStr, values[i][1]);
+                dateCount.set(dateStr, 1);
             }
-            else{
-                sum = (avgBucket.get(secs)) + values[i][1];
-                counter++;
-                
-                if (i+1 < values.length){
-                    var aheadDate = new Date(values[i+1][0]);
-                    /*var aheadMonthDay = (aheadDate.getMonth() + 1).toString() + '/' + (aheadDate.getDate()).toString();*/
-                    var aheadSecs = aheadDate.getSeconds();
-                    if (secs !== aheadSecs){
-                        avgBucket.set(secs, (sum/counter));
-                        counter = 0;
-                        sum = 0;
-                    }
-                }
-                else{
-                    avgBucket.set(secs, (sum/counter));
-                    counter = 0;
-                    sum = 0;
-                }
-            }            
+            else {
+                var sum = dateSum.get(dateStr) + values[i][1];
+                var count = dateCount.get(dateStr) + 1;
+                dateSum.set(dateStr, sum);
+                dateCount.set(dateStr, count)
+            }
+      
         }
-        
-        for (var i = 0; i < timescale; i++){
-            if (!avgBucket.has(i)){
-                avgBucket.set(i, 0);
+        for (let key of dateSum.keys()) {
+            if(dateCount.get(key) === 0){
+                continue;
             }
+            avgBucket.set(key, dateSum.get(key) / dateCount.get(key))
         }
 
         return avgBucket;
