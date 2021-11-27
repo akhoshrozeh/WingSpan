@@ -173,7 +173,7 @@ class Graph extends Component {
 	       vAxis: {
                 title: 'Sentiment Value',
 	       },
-	       title: "Sentiment Positive Negative Averages",
+	       title: "Sentiment Positive and Negative Averages",
 	       legend: { position: "bottom" },
            backgroundColor: {fill: 'transparent'},
         };
