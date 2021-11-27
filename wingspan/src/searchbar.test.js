@@ -1,6 +1,7 @@
 //import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 import SearchBar from './searchbar';
 
 test('searchbar renders', () => {
@@ -14,7 +15,7 @@ test('searchbar returns the correct query', () => {
   const { getByRole } = render(<SearchBar handleSubmit={mockSubmit} />);
   const searchBar = getByRole('textbox', {name: ""});
   const button = getByRole('button', {name: ""});
-  fireEvent.change(searchBar, {target: {value: "hello"}});
-  fireEvent.click(button);
+  userEvent.type(searchBar, "hello");
+  userEvent.click(button);
   expect(mockSubmit).toHaveReturnedWith("hello");
 });
