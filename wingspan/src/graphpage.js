@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Route } from 'react-router-dom';
 
 import SearchBar from './searchbar.js';
 import Logo from './logo.js';
@@ -19,22 +18,20 @@ class GraphPage extends Component
     }
 
     handleSubmit(query) {
-            fetch('http://localhost:8000/api?query=' + query,
-                    { method: 'GET', headers: {'Content-Type': '/application/json'} })
-            .then(resp => resp.json())
-            .then(data => this.setState({result: data}))
-            .catch(err => console.log(err))
+        fetch('http://localhost:8000/api?query=' + encodeURIComponent(query),
+                { method: 'GET', headers: {'Content-Type': '/application/json'} })
+        .then(resp => resp.json())
+        .then(data => this.setState({result: JSON.parse(data)}))
+        .catch(err => {this.setState({result: null}); console.log(err);})
     }
 
 	/* Render the graph page, add page url with query once data is retrieved form Express server */
 	render()
 	{
-        const result = JSON.parse(this.state.result);
-        // Not sure why we need to JSON.parse here, but it somehow became a string
         let display;
-        if (result) {
-            display = <><div className = "graphcontainer"><Graph data={result.scores}/></div>
-                        <div className = "tweetcontainer"><TopTweets ids={result.top_tweets}/></div></>;
+        if (this.state.result) {
+            display = <><div className = "graphcontainer"><Graph data={this.state.result.scores}/></div>
+                        <div className = "tweetcontainer"><TopTweets ids={this.state.result.top_tweets}/></div></>;
         }
 
 		return (
