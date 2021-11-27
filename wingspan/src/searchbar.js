@@ -28,9 +28,9 @@ class SearchBar extends Component{
 	render()
 	{
 		return (
-			<div className = "searchBar">
-				<input type = "text" placeholder = "Search.." value = {this.state.value} onChange = {this.handleChange}/>
-				<button className = "searchButton" type = "submit" onClick={(e) => this.handleSubmit(this.state.value)}/>
+			<div className="searchBar">
+				<input type="text" placeholder="Search.." value={this.state.value} onChange={this.handleChange}/>
+				<button className="searchButton" type="submit" onClick={(e) => this.handleSubmit(this.state.value)}/>
 			</div>
 		);
 	}
