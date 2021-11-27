@@ -6,7 +6,7 @@ class TopTweets extends Component {
         let tweets = JSON.parse(JSON.stringify(ids));  // Deep copy
 
         if (tweets.length === 0) {
-            return <h2>No Top Tweets</h2>
+            return <h2>There Are No Available Top Tweets</h2>
         }
 
         tweets.sort((a,b) => b.engagement - a.engagement);
