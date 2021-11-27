@@ -35,14 +35,15 @@ class SentimentAnalyzer():
         """
 
         Iterates through a given list of Tweet objects, uses the analyzer to perform sentiment analysis on the text,
-        and updates the sentiment_score and sentiment_magnitude of each Tweet. If the Google API credentials are not
-        set with an environment variable, the Tweets will be given random values.
+        and updates the sentiment_score of each Tweet. If the Google API credentials are not set with an environment 
+        variable, the Tweets will be given random values. Finally, this method returns a list of dictionaries with 
+        the values the frontend needs to construct a graph of the sentiment of the given Tweets.
 
         Args:
             tweets (List[Tweet]): list of tweets to analyze
 
         Return:
-            None
+            List[Dict]: a list of dictionaries corresponding to each Tweet with the following structure: {'score': sentiment_score, 'timestamp': timestamp} 
             
         """
         all_score_data = []

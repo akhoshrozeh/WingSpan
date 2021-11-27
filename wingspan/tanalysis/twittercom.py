@@ -47,8 +47,7 @@ class TwitterCom():
         It stores the results from the search in a list of Tweet objects.
         
         Args:
-            keyword (str): query to be used to search for Tweets
-            count (int): max results to be returned by Twitter API
+            input (Query): A Query object that contains the keyword and usernames to be used to search for Tweets
 
         Return:
             List[Tweet]
