@@ -32,6 +32,13 @@ class GraphPage extends Component
         if (this.state.result) {
             display = <><div className = "graphcontainer"><Graph data={this.state.result.scores}/></div>
                         <div className = "tweetcontainer"><TopTweets ids={this.state.result.top_tweets}/></div></>;
+        } else {
+                display = <div className = "instructioncontainer">
+                            <h1>Welcome to Wingspan!</h1>
+                            <p>To begin, enter a query into the search bar. Tweets with the keyword will have their sentiment analyzed.<br />
+                               To search only for tweets from a certain user, include the parameter "from:$USER".<br />
+                               To search only for tweets from multiple users, make sure to use the parameter OR: "from:$USER1 OR from:$USER2"</p>
+                          </div>
         }
 
 		return (

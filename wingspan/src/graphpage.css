@@ -17,3 +17,8 @@
        height: 75%;
        overflow-y: auto;
     }
+
+    .instructioncontainer{
+        position: fixed;
+        top: 30%
+    }
