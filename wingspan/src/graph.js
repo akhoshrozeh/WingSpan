@@ -117,12 +117,13 @@ class Graph extends Component {
            legend: { position: "none" },
            backgroundColor: {fill: 'transparent'},
         };
-        return (<Chart className = "chart"
+        return (<div data-testid="oneLine">
+                    <Chart className = "chart"
                     chartType = "LineChart"
                     data = {data}
                     options = {options}
                     legendToggle
-                />);
+                    /></div>);
     }
 
     /* Draws the histogram chart */
@@ -147,12 +148,13 @@ class Graph extends Component {
            legend: {position: "none"},
            backgroundColor: {fill: 'transparent'},
         };
-        return (<Chart className = "chart"
+        return (<div data-testid="histogram">
+                    <Chart className = "chart"
                     chartType = "Histogram"
                     data = {data}
                     options = {options}
                     legendtoggle
-                />);
+                    /></div>);
     }
 
     /* Draws the positive negative chart */
@@ -177,12 +179,13 @@ class Graph extends Component {
            legend: { position: "bottom" },
            backgroundColor: {fill: 'transparent'},
         };
-        return (<Chart className = "chart"
+        return (<div data-testid="twoLine">
+                    <Chart className = "chart"
                     chartType = "LineChart"
                     data = {data}
                     options = {options}
                     legendToggle
-                />);
+                    /></div>);
     }
 
     /* Handles the on click position */

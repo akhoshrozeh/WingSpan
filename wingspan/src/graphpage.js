@@ -22,7 +22,7 @@ class GraphPage extends Component
                 { method: 'GET', headers: {'Content-Type': '/application/json'} })
         .then(resp => resp.json())
         .then(data => this.setState({result: JSON.parse(data)}))
-        .catch(err => {this.setState({result: null}); console.log(err);})
+        .catch(err => this.setState({result: null}))
     }
 
     /* Render the graph page, add page url with query once data is retrieved form Express server */
