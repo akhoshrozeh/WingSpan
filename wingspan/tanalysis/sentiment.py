@@ -4,6 +4,7 @@ from typing import List
 import os
 import random
 import datetime
+import string
 
 class SentimentAnalyzer():
     """
@@ -47,14 +48,25 @@ class SentimentAnalyzer():
             
         """
         all_score_data = []
-
         if self.analyzer:
+            document_text = ''
+            tweets_by_date = {}
             for tweet in tweets:
-                document = language_v1.Document(content=tweet.text, type_=self.type)
+                date = tweet.timestamp.date()
+                if date not in tweets_by_date:
+                    tweets_by_date[date] = ''
+                tweets_by_date[date] += tweet.text
+
+            for date, document_text in tweets_by_date.items():
+                document = language_v1.Document(content=document_text, type_=self.type)
                 response = self.analyzer.analyze_sentiment(request={'document': document})
-                tweet.score = response.document_sentiment.score * response.document_sentiment.magnitude
-                tweet.save()
-                all_score_data.append({'score': tweet.score, 'timestamp': tweet.timestamp.strftime("%m-%d-%yT%H:%M:%SZ")})
+                for index, sentence in enumerate(response.sentences):
+                    if index >= len(tweets):
+                        break
+                    tweet = tweets[index]
+                    tweet.score = sentence.sentiment.score * sentence.sentiment.magnitude
+                    tweet.save()
+                    all_score_data.append({'score': tweet.score, 'timestamp': str(date)})
         else:
             for tweet in tweets:
                 tweet.score  = (random.uniform(-1, 1) * random.uniform(0, 100))

@@ -2,5 +2,6 @@
 *__pycache__/
 !/.gitignore
 wingspan-331100-af724c87a151.json
+wingspan-33518-495912a3efbd.json
 .env
 db.sqlite3
