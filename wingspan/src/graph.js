@@ -23,6 +23,8 @@ class Graph extends Component {
         let dateCount = new Map();  
         for (var i = 0; i < values.length; i++){
             var date = new Date((values[i][0]).replace('T', ' '));
+            // Correct timezone of date
+            date = new Date(date.getTime() + Math.abs(date.getTimezoneOffset()*60000))
             var dateStr = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
 
             if(!dateSum.has(dateStr)){
