@@ -51,5 +51,18 @@ class TwitterComTestCase(TestCase):
         query.save()
         tweets = self.tc.findTweets(query)
         top_tweets = self.tc.getTopTweets(tweets)
+
+        verified_count = 0
+        for i in tweets:
+            if i.verified == True:
+                verified_count += 1
+
+        tids = []
+        for i in top_tweets:
+            tids.append(i['tid'])
+
         self.assertTrue(len(top_tweets) >= 0)
-        self.assertTrue(len(top_tweets) >= len(tweets))
+        self.assertTrue(len(top_tweets) <= len(tweets))
+        self.assertTrue(verified_count == len(top_tweets))
+        self.assertTrue(len(top_tweets) == len(set(tids)))
+

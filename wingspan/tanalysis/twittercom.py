@@ -67,7 +67,7 @@ class TwitterCom():
                     this_tweet.save()
                     latest_id = max(int(tweet.id_str), latest_id)
                     if input.users.exists():
-                        if this_tweet.username in input.users:
+                        if this_tweet.username in input.users.all():
                             if not tweet.retweeted:
                                 all_tweets.append(this_tweet)
                     else:
