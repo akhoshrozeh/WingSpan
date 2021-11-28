@@ -38,9 +38,6 @@ class Graph extends Component {
 
         }
         for (let key of dateSum.keys()) {
-            if(dateCount.get(key) === 0){
-                continue;
-            }
             avgBucket.set(key, dateSum.get(key) / dateCount.get(key))
         }
 
@@ -199,8 +196,6 @@ class Graph extends Component {
             this.setState({
                curr_pos: 2
             });
-
-
         }
         else if(position === 2){
             this.setState({
@@ -219,15 +214,6 @@ class Graph extends Component {
         }
         else if (this.state.curr_pos === 2){
             return this.drawPosNegChart(values);
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.data !== this.state.data) {
-            this.setState({
-                curr_pos : 0,
-                values : (nextProps.data.map((scores) => {return [scores.timestamp, scores.score]})),
-            });
         }
     }
 
