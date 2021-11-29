@@ -1,4 +1,3 @@
-from django.db.models.query_utils import Q
 from django.test import TestCase
 #from django.utils import timezone
 import os
@@ -67,4 +66,3 @@ class TwitterComTestCase(TestCase):
         self.assertTrue(len(top_tweets) <= len(tweets))
         self.assertTrue(verified_count == len(top_tweets))
         self.assertTrue(len(top_tweets) == len(set(tids)))
-
