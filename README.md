@@ -31,20 +31,33 @@ Estee Tcheau
 
 #### 1. Clone our repository by running the command
 
-`git clone https://github.com/`
+`git clone https://github.com/akhoshrozeh/WingSpan.git`
 
 #### 2. Obtain the proper Twitter and Google NLP credentials from one of the contributors
 
-#### 3. In the project directory, install the dependencies by running the commands
+#### 3. Ensure you're using Node v17.1.0
 
-`npm install`
+If you have `nvm`, run `nvm install 17.1.0` and you will begin using Node v17.1.0
+If you already have it, you can run `nvm use 17.1.0`
+You can check by running `node --version`
 
-`pip install -r requirements.txt`
+#### 4. Install dependencies in '/scripts'
 
-#### 4. In the project directory, start the app in development mode by running the command
+Run `cd scripts` to enter the `scripts` directory.
+Then run `./setup.sh`, which will install dependencies for the React and Django. 
+
+#### 4. In the '/scripts', start the app in development mode by running the command
 
 `./run.sh`
 
 #### 5. Open the local host
 
 Go to http://localhost:3000 in your browser to start the application!
+
+
+
+## Running Django Tests
+
+#### 1. Go to the '/scripts' directory
+Run `./django_tests.sh` to begin running the Django tests.
+After this script runs, a report should be printed telling about the success of the tests and its coverage of statements and branches.
