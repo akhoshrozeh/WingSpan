@@ -4,3 +4,6 @@ sphinx
 tweepy
 python-dotenv
 django-environ
+django-nose
+coverage
+testfixtures

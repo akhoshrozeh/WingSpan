@@ -26,3 +26,12 @@ class SentimentTestCase(TestCase):
         for score in score_data:
             self.assertTrue(score["score"] is not None)
             self.assertTrue(score["timestamp"] is not None)
+
+    def test_analyze_tweets_without_credentials(self):
+        del os.environ['GOOGLE_APPLICATION_CREDENTIALS']
+        sa = SentimentAnalyzer()
+        score_data = sa.analyzeTweets([self.tweet])
+        
+        for score in score_data:
+            self.assertTrue(score["score"] is not None)
+            self.assertTrue(score["timestamp"] is not None)

@@ -1,10 +1,11 @@
 from django.test import TestCase
 #from django.utils import timezone
-#import os
+import os
 import unittest
 
 from .models import Query, User
 from .twittercom import TwitterCom
+
 
 class TwitterComTestCase(TestCase):
     def setUp(self):
@@ -65,4 +66,3 @@ class TwitterComTestCase(TestCase):
         self.assertTrue(len(top_tweets) <= len(tweets))
         self.assertTrue(verified_count == len(top_tweets))
         self.assertTrue(len(top_tweets) == len(set(tids)))
-
