@@ -78,19 +78,19 @@ class TwitterCom():
         except tweepy.TweepyException as e:
             logging.error('Error:' + str(e))
             return all_tweets
-
+    
+    
     def getTopTweets(self, tweets: List[Tweet]):
         """
+        Returns a list of dictionaries with the "engagement" information about all of the inputted Tweets that were sent by verified users.
+        This information is used by the frontend in the "Top Tweets" section.
 
-        After scores have been collected for a certain query, getTopTweets() will be called to collect a list of
-        Tweets by verified users on Twitter to display on the frontend.
-        
         Args:
-            tweets List[(Query)]: A comprehensive List of Tweets that contain all tweets that contain the original
-            query string.
+            tweets (List[Tweet]): A list of Tweets to search through to find Tweets by verified users
 
         Return:
-            List[Tweet]
+            List[Dict]: A list of dictionaries corresponding to each Tweet by a verified user with the following structure: 
+            {"tid": tweet.id, "engagement": (2*tweet.retweets + tweet.likes)}
 
         """
         top_tweets = []
