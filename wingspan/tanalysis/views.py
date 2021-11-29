@@ -9,10 +9,6 @@ import json
 # Create your views here.
 
 def index(request):
-    """
-    For the time being, the view just renders a list of tweets from a random keyword.
-    This is where the frontend is rendered.
-    """
     query = request.GET.get('query',None)
     if query is not None:
         sa = SentimentAnalyzer()
@@ -26,6 +22,14 @@ def index(request):
         return HttpResponseBadRequest()
 
 def api(request):
+    """
+
+    API takes the query_str and the list of users that are in the request from the frontend and passes
+    them through the findTweets() and analyzeTweets() methods. After an anonymized list of scores is found,
+    it is compiled with a list of top tweets by verified users for that query returned by getTopTweets().
+    This JSON of data is returned back to the frontend.
+
+    """
     query_str = request.GET.get('query',None)
     users = request.GET.get('users', None)
     if query_str is not None:

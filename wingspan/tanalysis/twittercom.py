@@ -80,6 +80,19 @@ class TwitterCom():
             return all_tweets
 
     def getTopTweets(self, tweets: List[Tweet]):
+        """
+
+        After scores have been collected for a certain query, getTopTweets() will be called to collect a list of
+        Tweets by verified users on Twitter to display on the frontend.
+        
+        Args:
+            tweets List[(Query)]: A comprehensive List of Tweets that contain all tweets that contain the original
+            query string.
+
+        Return:
+            List[Tweet]
+
+        """
         top_tweets = []
         for tweet in tweets:
             if tweet.verified:
