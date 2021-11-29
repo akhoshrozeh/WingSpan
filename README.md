@@ -46,11 +46,11 @@ You can check by running `node --version`
 Run `cd scripts` to enter the `scripts` directory.
 Then run `./setup.sh`, which will install dependencies for the React and Django. 
 
-#### 4. In the '/scripts', start the app in development mode by running the command
+#### 5. In the '/scripts', start the app in development mode by running the command
 
 `./run.sh`
 
-#### 5. Open the local host
+#### 6. Open the local host
 
 Go to http://localhost:3000 in your browser to start the application!
 
