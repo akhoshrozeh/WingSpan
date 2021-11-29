@@ -46,7 +46,7 @@ You can check by running `node --version`
 Run `cd scripts` to enter the `scripts` directory.
 Then run `./setup.sh`, which will install dependencies for the React and Django. 
 
-#### 5. In the '/scripts', start the app in development mode by running the command
+#### 5. In the '/scripts', start the app by running the command
 
 `./run.sh`
 
@@ -56,8 +56,14 @@ Go to http://localhost:3000 in your browser to start the application!
 
 
 
-## Running Django Tests
+## Running Tests
 
 #### 1. Go to the '/scripts' directory
+
+#### 2. Django Tests
 Run `./django_tests.sh` to begin running the Django tests.
 After this script runs, a report should be printed telling about the success of the tests and its coverage of statements and branches.
+
+#### 3. React Tests
+Run `./react_tests.sh` to begin running the React tests.
+This test will report test success and coverage for the frontend files.
