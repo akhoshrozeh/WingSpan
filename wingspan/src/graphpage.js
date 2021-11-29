@@ -22,12 +22,12 @@ class GraphPage extends Component
                 { method: 'GET', headers: {'Content-Type': '/application/json'} })
         .then(resp => resp.json())
         .then(data => this.setState({result: JSON.parse(data)}))
-        .catch(err => {this.setState({result: null}); console.log(err);})
+        .catch(err => this.setState({result: null}))
     }
 
-	/* Render the graph page, add page url with query once data is retrieved form Express server */
-	render()
-	{
+    /* Render the graph page, add page url with query once data is retrieved form Express server */
+    render()
+    {
         let display;
         if (this.state.result) {
             display = <><div className = "graphcontainer"><Graph data={this.state.result.scores}/></div>
@@ -41,21 +41,21 @@ class GraphPage extends Component
                           </div>
         }
 
-		return (
-				<div>
-					<nav className = "querysearchbarcontainer">
-						<SearchBar handleSubmit={this.handleSubmit}/>
-					</nav>
-					<div className = "logocontainer">
-                            <Logo/>
-					</div>
-					<div className = "headercontainer">
-						<Header/> 
-					</div>
+        return (
+                <div>
+                    <nav className = "querysearchbarcontainer">
+                        <SearchBar handleSubmit={this.handleSubmit}/>
+                    </nav>
+                    <div className = "logocontainer">
+                        <Logo/>
+                    </div>
+                    <div className = "headercontainer">
+                        <Header/>
+                    </div>
                     {display}
-				</div>
-		);
-	}
+                </div>
+        );
+    }
 }
 
 export default GraphPage;

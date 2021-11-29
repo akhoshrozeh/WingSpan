@@ -60,9 +60,9 @@ class TwitterCom():
         latest_id = 0
         try:
             for i in range(6, -1, -1):
-                tweet_list = self.api.search_tweets(input.query, lang="en", count=100, since_id=latest_id, until=str(tomorrow - datetime.timedelta(days=i)))
+                tweet_list = self.api.search_tweets(input.query + ' -filter:retweets', lang="en", count=100, since_id=latest_id, until=str(tomorrow - datetime.timedelta(days=i)), tweet_mode='extended')
                 for tweet in tweet_list:
-                    this_tweet = Tweet(tid=tweet.id_str, text=tweet.text, username=tweet.user.name, timestamp=tweet.created_at,
+                    this_tweet = Tweet(tid=tweet.id_str, text=tweet.full_text, username=tweet.user.name, timestamp=tweet.created_at,
                         verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
                     this_tweet.save()
                     latest_id = max(int(tweet.id_str), latest_id)
