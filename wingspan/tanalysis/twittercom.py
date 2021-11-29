@@ -66,7 +66,7 @@ class TwitterCom():
                         verified=tweet.user.verified, likes=tweet.favorite_count, retweets=tweet.retweet_count)
                     this_tweet.save()
                     latest_id = max(int(tweet.id_str), latest_id)
-                    retweeted = tweet.text.startswith('RT @')
+                    retweeted = tweet.full_text.startswith('RT @')
                     if input.users.exists():
                         if this_tweet.username in input.users.all():
                             if not retweeted and not tweet.is_quote_status:
