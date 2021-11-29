@@ -13,17 +13,18 @@ test('renders no input without crashing', () => {
   expect(button).toBeInTheDocument();
 
   expect(window.alert).toHaveBeenCalled();
+  window.alert.mockClear();
   userEvent.click(button);
   expect(window.alert).toHaveBeenCalled();
+  window.alert.mockClear();
   userEvent.click(button);
   expect(window.alert).toHaveBeenCalled();
+  window.alert.mockClear();
   userEvent.click(button);
   expect(window.alert).toHaveBeenCalled();
 });
 
 test('renders input without crashing', () => {
-  // Mock alert
-  window.alert = jest.fn(() => {});
   const { getByRole, getByTestId } = render(<Graph data={
     [
       {timestamp: '11-28-2021T11:11:11', score: 1}, 
